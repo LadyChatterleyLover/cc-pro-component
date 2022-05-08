@@ -1,0 +1,13 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+.el-container,
+.el-menu {
+  height: 100%;
+  overflow-x: hidden;
+}
