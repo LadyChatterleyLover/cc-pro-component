@@ -58,6 +58,14 @@ const router = createRouter({
           },
         },
         {
+          path: '/component/countdown',
+          name: 'countdown',
+          component: () => import('@/views/countdown/index.vue'),
+          meta: {
+            title: '倒计时',
+          },
+        },
+        {
           path: '/feat/clickOutside',
           name: 'clickOutside',
           component: () => import('@/views/clickOutside/index.vue'),

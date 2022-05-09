@@ -4,8 +4,9 @@ import Area from './chooseArea'
 import Menu from './menu'
 import AvatarGroup from './avatarGroup'
 import Comment from './comment'
+import CountDown from './countdown'
 
-const components = [Icon, Area, Menu, AvatarGroup, Comment]
+const components = [Icon, Area, Menu, AvatarGroup, Comment, CountDown]
 
 export default {
   install(app: App) {

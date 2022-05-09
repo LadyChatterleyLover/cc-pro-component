@@ -41,6 +41,11 @@ export const menuData: MenuItem[] = [
         name: '评论',
         index: '/component/comment',
       },
+      {
+        icon: 'Clock',
+        name: '倒计时',
+        index: '/component/countdown',
+      },
     ],
   },
   {
