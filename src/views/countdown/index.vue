@@ -17,7 +17,7 @@
     <div class="demo-title">手动触发</div>
     <div class="demo-item">
       <cc-countdown separator="zh" :time="time" :start="start"></cc-countdown>
-      <el-button type="primary" size="mini" @click="start = true">start</el-button>
+      <el-button type="primary" size="small" @click="start = true">start</el-button>
     </div>
   </div>
 

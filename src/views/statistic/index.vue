@@ -20,7 +20,7 @@
     :start="start"
     animation
   ></cc-statistic>
-  <el-button size="mini" @click="start = true">start</el-button>
+  <el-button size="small" @click="start = true">start</el-button>
   <br />
   <br />
   <span>加载状态，两秒之后渲染</span>

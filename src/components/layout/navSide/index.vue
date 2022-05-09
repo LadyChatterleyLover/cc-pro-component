@@ -1,6 +1,6 @@
 <template>
   <div class="side">
-    <cc-menu :collapse="collapse" :data="menuData" router :defaultActive="$route.path"></cc-menu>
+    <cc-menu unique-opened :collapse="collapse" :data="menuData" router :defaultActive="$route.path"></cc-menu>
   </div>
 </template>
 

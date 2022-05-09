@@ -1,101 +1,93 @@
-import { ref, watch, unref, onMounted } from 'vue'
-import type { Ref } from 'vue'
+import { ref, watch } from "vue"
 
-export interface Result<T> {
-  list: T[]
-  total: number
+export interface Result {
+  total: number,
+  list: any[]
+}
+export type Service = ({ current, pageSize }: { current: number, pageSize: number }) => Promise<Result>
+
+export interface Pagination {
+  current?: number,
+  pageSize?: number
+  total?: number,
+  showTotal?: (total: number) => number | string,
+  showSizeChanger?: boolean,
+  showQuickJumper?: boolean
 }
 
-export interface Options {
-  current: number
-  pageSize: number
+export interface TableProps {
+  dataSource: any[],
+  pagination: Pagination
+  loading: boolean
 }
 
-export function useTable<T>(
-  request: ({ current, pageSize }: { current: number; pageSize: number }) => Promise<Result<T>>,
-  opts?: Options
-) {
-  const list = ref<T[]>([]) as Ref<T[]>
-  const tableData = ref<T[]>([]) as Ref<T[]>
+
+
+export const useTable = (
+  service: Service,
+  pagination: Pagination = {
+    total: 0,
+    showTotal: () => '',
+    showSizeChanger: true,
+    showQuickJumper: true
+  }
+) => {
+
+  const {
+    total: totalCount = 0,
+    showTotal = (total) => `总共${total}条`,
+    showSizeChanger = true,
+    showQuickJumper = true
+  } = pagination!
+
+  const current = ref<number>(pagination.current || 1)
+  const pageSize = ref<number>(pagination.pageSize || 10)
   const total = ref<number>(0)
-  const totalNumber = ref<number>(0)
-  const current = ref<number>(opts?.current || 1)
-  const pageSize = ref<number>(opts?.pageSize || 10)
-  const loading = ref<boolean>(false)
+  const list = ref<any[]>([])
   const err = ref<any>()
-
-  const service = ({ current, pageSize }: { current: number; pageSize: number }) => {
-    loading.value = true
-    request({
-      current,
-      pageSize,
-    })
-      .then((res) => {
-        loading.value = false
-        list.value = res.list
-        totalNumber.value = res.total
-      })
-      .catch((e) => {
-        err.value = e
-        loading.value = false
-      })
-  }
-
-  onMounted(() => {
-    service({
-      current: current.value,
-      pageSize: pageSize.value,
-    })
+  const tableProps = ref<TableProps>({
+    pagination: {
+      total: totalCount,
+      showTotal,
+      showSizeChanger,
+      showQuickJumper
+    },
+    dataSource: [],
+    loading: true
   })
-
-  watch(
-    () => [list.value, totalNumber.value],
-    (val) => {
-      if (!(val[0] as T[]).length || !(val[1] as number)) {
-        return
-      }
-      console.log(val)
-      tableData.value = val[0] as T[]
-      total.value = val[1] as number
-    }
-  )
-
-  const sizeChange = (val: number) => {
-    pageSize.value = val
-    service({
-      current: current.value,
-      pageSize: pageSize.value,
-    })
-  }
-
-  const currentChange = (val: number) => {
-    current.value = val
-    service({
-      current: current.value,
-      pageSize: pageSize.value,
-    })
-  }
 
   const refresh = () => {
     service({
       current: current.value,
-      pageSize: pageSize.value,
+      pageSize: pageSize.value
+    }).then((res: Result) => {
+      list.value = res.list
+      total.value = res.total
+    }).catch((e: any) => {
+      err.value = e
     })
+  }
+  refresh()
+  watch(() => [total.value, list.value], (val: any) => {
+    if (!val[0] || !val[1]) return
+    tableProps.value.pagination!.total = val[0]
+    tableProps.value.dataSource = val[1]
+    tableProps.value.loading = false
+  })
+
+  const sizeChange = (val: number) => {
+    pageSize.value = val
+    refresh()
+  }
+  const currentChange = (val: number) => {
+    current.value = val
+    refresh()
   }
 
   return {
-    err: err,
     refresh,
-    tableProps: {
-      loading: unref(loading),
-      dataSource: unref(tableData),
-      pagination: {
-        current: unref(current),
-        pageSize: unref(pageSize),
-        total: unref(total),
-        currentChange,
-        sizeChange,
-      },
-    },
+    tableProps: tableProps.value,
+    sizeChange,
+    currentChange
   }
 }
