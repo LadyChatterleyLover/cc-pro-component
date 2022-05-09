@@ -2,7 +2,7 @@
 
 type Callback = (e?: any) => void
 
-export const useCopy = (val: string, onSuccess?: Callback, onError?: Callback) => {
+export function useCopy(val: string, onSuccess?: Callback, onError?: Callback) {
   const copy = async () => {
     try {
       await window.navigator.clipboard.writeText(val)
@@ -13,6 +13,6 @@ export const useCopy = (val: string, onSuccess?: Callback, onError?: Callback) =
   }
 
   return {
-    copy
+    copy,
   }
 }

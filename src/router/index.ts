@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import Layout from '../views/Layout/index.vue'
 import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
@@ -6,15 +7,56 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: HomeView
+      component: Layout,
+      children: [
+        {
+          path: '/',
+          name: 'home',
+          component: HomeView,
+          meta: {
+            title: '首页',
+          },
+        },
+        {
+          path: '/chooseIcon',
+          name: 'chooseIcon',
+          component: () => import('@/views/chooseIcon/index.vue'),
+          meta: {
+            title: '图标选择器',
+          },
+        },
+        {
+          path: '/chooseArea',
+          name: 'chooseArea',
+          component: () => import('@/views/chooseArea/index.vue'),
+          meta: {
+            title: '省市区选择器',
+          },
+        },
+        {
+          path: '/menu',
+          name: 'menu',
+          component: () => import('@/views/menu/index.vue'),
+          meta: {
+            title: '导航菜单',
+          },
+        },
+        {
+          path: '/feat/clickOutside',
+          name: 'clickOutside',
+          component: () => import('@/views/clickOutside/index.vue'),
+          meta: {
+            title: 'clickOutside',
+          },
+        },
+      ],
     },
-    {
-      path: '/chooseIcon',
-      name: 'chooseIcon',
-      component: () => import('@/views/chooseIcon/index.vue')
-    }
-  ]
+  ],
+})
+
+router.beforeEach((to, _, next) => {
+  document.title = to.meta.title as string
+  next()
 })
 
 export default router

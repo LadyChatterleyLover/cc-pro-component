@@ -1,8 +1,9 @@
 import type { App } from 'vue'
-import Icon from './src/index.vue'
+
+import Menu from './src/index'
 
 export default {
   install(app: App) {
-    app.component('cc-choose-icon', Icon)
+    app.component('cc-menu', Menu)
   },
 }

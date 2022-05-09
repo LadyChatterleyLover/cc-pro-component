@@ -1,14 +1,14 @@
-// import { App } from 'vue'
+import type { App } from 'vue'
 import Icon from './choosIcon'
+import Area from './chooseArea'
+import Menu from './menu'
 
-const components = [
-  Icon
-]
+const components = [Icon, Area, Menu]
 
 export default {
-  install(app: any) {
-    components.map(c => {
+  install(app: App) {
+    components.map((c) => {
       app.use(c)
     })
-  }
+  },
 }

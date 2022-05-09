@@ -1,0 +1,19 @@
+<template>
+  <div>
+    <button ref="box">box</button>
+    <p>{{ count }}</p>
+  </div>
+</template>
+
+<script setup lang="ts">
+import { ref } from 'vue'
+import { useClickOutside } from '@/hooks/useClickOutside'
+
+const count = ref(0)
+
+const [box] = useClickOutside({
+  callback: () => count.value++,
+})
+</script>
+
+<style scoped lang="scss"></style>
