@@ -7,8 +7,19 @@ import Comment from "./comment"
 import CountDown from "./countdown"
 import dataList from "./dataList"
 import rotateVerify from "./rotateVerify"
+import slideVerify from './slideVerify'
 
-const components = [Icon, Area, Menu, AvatarGroup, Comment, CountDown, dataList, rotateVerify]
+const components = [
+  Icon,
+  Area,
+  Menu,
+  AvatarGroup,
+  Comment,
+  CountDown,
+  dataList,
+  rotateVerify,
+  slideVerify
+]
 
 export default {
   install(app: App) {

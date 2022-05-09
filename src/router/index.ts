@@ -82,6 +82,14 @@ const router = createRouter({
           },
         },
         {
+          path: '/component/slideVerify',
+          name: 'slideVerify',
+          component: () => import('@/views/slideVerify/index.vue'),
+          meta: {
+            title: '滑动验证码',
+          },
+        },
+        {
           path: '/feat/clickOutside',
           name: 'clickOutside',
           component: () => import('@/views/clickOutside/index.vue'),

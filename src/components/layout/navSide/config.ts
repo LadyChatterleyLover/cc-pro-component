@@ -61,6 +61,11 @@ export const menuData: MenuItem[] = [
         name: '旋转验证码',
         index: '/component/rotateVerify',
       },
+      {
+        icon: 'Open',
+        name: '滑动验证码',
+        index: '/component/slideVerify',
+      },
     ],
   },
   {
