@@ -74,6 +74,14 @@ const router = createRouter({
           },
         },
         {
+          path: '/component/rotateVerify',
+          name: 'rotateVerify',
+          component: () => import('@/views/rotateVerify/index.vue'),
+          meta: {
+            title: '旋转验证码',
+          },
+        },
+        {
           path: '/feat/clickOutside',
           name: 'clickOutside',
           component: () => import('@/views/clickOutside/index.vue'),

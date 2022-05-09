@@ -42,6 +42,11 @@ export const menuData: MenuItem[] = [
         index: '/component/comment',
       },
       {
+        icon: 'Operation',
+        name: '评论',
+        index: '/component/comment',
+      },
+      {
         icon: 'Clock',
         name: '倒计时',
         index: '/component/countdown',
@@ -50,6 +55,11 @@ export const menuData: MenuItem[] = [
         icon: 'Clock',
         name: '数据列表',
         index: '/component/dataList',
+      },
+      {
+        icon: 'Loading',
+        name: '旋转验证码',
+        index: '/component/rotateVerify',
       },
     ],
   },
