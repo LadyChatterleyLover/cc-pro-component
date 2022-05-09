@@ -51,6 +51,11 @@ export const menuData: MenuItem[] = [
         index: '/feat/hooksTable',
         icon: 'Document',
       },
+      {
+        name: '水印',
+        index: '/feat/watermark',
+        icon: 'Film',
+      },
     ],
   },
 ]

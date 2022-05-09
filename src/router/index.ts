@@ -73,6 +73,14 @@ const router = createRouter({
             title: 'hooks表格',
           },
         },
+        {
+          path: '/feat/watermark',
+          name: 'watermark',
+          component: () => import('@/views/watermark/index.vue'),
+          meta: {
+            title: '水印',
+          },
+        },
       ],
     },
   ],
