@@ -9,10 +9,10 @@ export default defineConfig({
   plugins: [vue(), vueJsx()],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
   },
   server: {
-    port: 8080
-  }
+    port: 9527,
+  },
 })
