@@ -66,6 +66,11 @@ export const menuData: MenuItem[] = [
         name: '滑动验证码',
         index: '/component/slideVerify',
       },
+      {
+        icon: 'Minus',
+        name: '分割面板',
+        index: '/component/split',
+      },
     ],
   },
   {

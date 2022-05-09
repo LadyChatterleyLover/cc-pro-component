@@ -1,5 +1,5 @@
 import type { App } from "vue"
-import Icon from "./chooseIcon"
+import Icon from "./choosIcon"
 import Area from "./chooseArea"
 import Menu from "./menu"
 import AvatarGroup from "./avatarGroup"
@@ -8,6 +8,7 @@ import CountDown from "./countdown"
 import dataList from "./dataList"
 import rotateVerify from "./rotateVerify"
 import slideVerify from './slideVerify'
+import split from './split'
 
 const components = [
   Icon,
@@ -18,7 +19,8 @@ const components = [
   CountDown,
   dataList,
   rotateVerify,
-  slideVerify
+  slideVerify,
+  split
 ]
 
 export default {

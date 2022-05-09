@@ -90,6 +90,14 @@ const router = createRouter({
           },
         },
         {
+          path: '/component/split',
+          name: 'split',
+          component: () => import('@/views/split/index.vue'),
+          meta: {
+            title: '分割面板',
+          },
+        },
+        {
           path: '/feat/clickOutside',
           name: 'clickOutside',
           component: () => import('@/views/clickOutside/index.vue'),
