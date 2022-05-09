@@ -5,11 +5,12 @@ import Menu from "./menu"
 import AvatarGroup from "./avatarGroup"
 import Comment from "./comment"
 import CountDown from "./countdown"
-import dataList from "./dataList"
-import rotateVerify from "./rotateVerify"
-import slideVerify from './slideVerify'
-import split from './split'
-import statistic from './statistic'
+import DataList from "./dataList"
+import RotateVerify from "./rotateVerify"
+import SlideVerify from './slideVerify'
+import Split from './split'
+import Statistic from './statistic'
+import Segmented from './segmented'
 
 const components = [
   Icon,
@@ -18,11 +19,12 @@ const components = [
   AvatarGroup,
   Comment,
   CountDown,
-  dataList,
-  rotateVerify,
-  slideVerify,
-  split,
-  statistic
+  DataList,
+  RotateVerify,
+  SlideVerify,
+  Split,
+  Statistic,
+  Segmented
 ]
 
 export default {

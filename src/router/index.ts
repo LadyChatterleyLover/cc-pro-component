@@ -106,6 +106,14 @@ const router = createRouter({
           },
         },
         {
+          path: '/component/segmented',
+          name: 'statistic',
+          component: () => import('@/views/segmented/index.vue'),
+          meta: {
+            title: '分段器',
+          },
+        },
+        {
           path: '/feat/clickOutside',
           name: 'clickOutside',
           component: () => import('@/views/clickOutside/index.vue'),

@@ -76,6 +76,11 @@ export const menuData: MenuItem[] = [
         name: '数字统计',
         index: '/component/statistic',
       },
+      {
+        icon: 'ArrowRight',
+        name: '分段器',
+        index: '/component/segmented',
+      },
     ],
   },
   {

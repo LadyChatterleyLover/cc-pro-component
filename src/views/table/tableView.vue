@@ -6,6 +6,7 @@
   </el-table>
 
   <el-pagination
+    v-if="!tableProps.loading"
     v-model:currentPage="tableProps.pagination.current"
     v-model:page-size="tableProps.pagination.pageSize"
     :page-sizes="[10, 20, 30, 40]"
