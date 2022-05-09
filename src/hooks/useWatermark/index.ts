@@ -8,11 +8,12 @@ export interface Options {
 export const useWatermark = (str: string) => {
   const domSymbol = Symbol('watermark-dom')
   const id = domSymbol.toString()
-  const appendEl: HTMLElement | null = document.body
+  const appendEl = ref<HTMLElement | null>(document.body)
   const watermarkEl = ref<HTMLElement | null>()
+  const flag = ref<boolean>(false)
 
   const func = () => {
-    const el = appendEl
+    const el = appendEl.value
     if (!el) return
     const { clientHeight: height, clientWidth: width } = el
     update({ height, width })
@@ -40,7 +41,7 @@ export const useWatermark = (str: string) => {
       width?: number
       height?: number
       str?: string
-    } = { width: 300, height: 240 }
+    } = { width: 50, height: 50 }
   ) => {
     const el = watermarkEl
     if (!el) return
@@ -49,27 +50,33 @@ export const useWatermark = (str: string) => {
     el.value!.style.background = `url(${createCanvas()}) left top repeat`
   }
   const create = (str: string) => {
-    const div = document.createElement('div')
-    watermarkEl.value = div
-    div.id = id
-    div.style.pointerEvents = 'none'
-    div.style.top = '0px'
-    div.style.left = '0px'
-    div.style.position = 'absolute'
-    div.style.zIndex = '100000'
-    const el = appendEl
-    if (!el) return id
-    const { clientHeight: height, clientWidth: width } = el
-    update({ str, width, height })
-    el.appendChild(div)
+    if (!flag.value) {
+      const div = document.createElement('div')
+      watermarkEl.value = div
+      div.id = id
+      div.style.pointerEvents = 'none'
+      div.style.top = '0px'
+      div.style.left = '0px'
+      div.style.position = 'absolute'
+      div.style.zIndex = '100000'
+      const el = appendEl.value
+      el!.style.position = 'relative'
+      if (!el) return id
+      const { clientHeight: height, clientWidth: width } = el
+      update({ str, width, height })
+      el.appendChild(div)
+      flag.value = true
+    }
     return id
   }
   const clear = () => {
-    const el = appendEl
+    const el = appendEl.value
     if (!el) return
+    el.style.position = 'inherit'
     el.removeChild(watermarkEl.value!)
     watermarkEl.value = null
     window.removeEventListener('resize', func)
+    flag.value = false
   }
   const setWatermark = () => {
     create(str)
@@ -78,5 +85,6 @@ export const useWatermark = (str: string) => {
   return {
     setWatermark,
     clear,
+    el: appendEl
   }
 }
