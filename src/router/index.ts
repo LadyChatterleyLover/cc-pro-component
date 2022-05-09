@@ -81,6 +81,14 @@ const router = createRouter({
             title: '水印',
           },
         },
+        {
+          path: '/feat/fullScreen',
+          name: 'fullScreen',
+          component: () => import('@/views/fullScreen/index.vue'),
+          meta: {
+            title: '全屏',
+          },
+        },
       ],
     },
   ],

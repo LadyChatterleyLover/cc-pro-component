@@ -56,6 +56,11 @@ export const menuData: MenuItem[] = [
         index: '/feat/watermark',
         icon: 'Film',
       },
+      {
+        name: '全屏',
+        index: '/feat/fullScreen',
+        icon: 'FullScreen',
+      },
     ],
   },
 ]

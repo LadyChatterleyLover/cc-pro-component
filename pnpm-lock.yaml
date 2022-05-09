@@ -13,6 +13,7 @@ specifiers:
   element-plus: ^2.1.11
   sass: ^1.51.0
   sass-loader: ^12.6.0
+  screenfull: ^6.0.1
   typescript: ~4.6.3
   vite: ^2.9.5
   vue: ^3.2.33
@@ -23,6 +24,7 @@ dependencies:
   '@element-plus/icons-vue': 1.1.4_vue@3.2.33
   countup.js: 2.1.0
   element-plus: 2.1.11_vue@3.2.33
+  screenfull: 6.0.1
   vue: 3.2.33
   vue-router: 4.0.15_vue@3.2.33
 
@@ -2314,6 +2316,11 @@ packages:
       immutable: 4.0.0
       source-map-js: 1.0.2
     dev: true
+
+  /screenfull/6.0.1:
+    resolution: {integrity: sha512-yzQW+j4zMUBQC51xxWaoDYjxOtl8Kn+xvue3p6v/fv2pIi1jH4AldgVLU8TBfFVgH2x3VXlf3+YiA/AYIPlaew==}
+    engines: {node: ^14.13.1 || >=16.0.0}
+    dev: false
 
   /semver/5.7.1:
     resolution: {integrity: sha512-sauaDf/PZdVgrLTNYHRtpXa1iRiKcaebiKQ1BJdpQlWH2lCvexQdX55snPFyK7QzpudqbCI0qXFfOasHdyNDGQ==}
