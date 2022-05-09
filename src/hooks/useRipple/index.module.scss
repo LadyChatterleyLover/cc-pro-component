@@ -1,0 +1,21 @@
+.cc--ripple--wrap {
+  overflow: hidden;
+  position: relative;
+}
+.cc--ripple--content {
+  position: absolute;
+  border-radius: 100%;
+  transform: scale(0);
+
+}
+
+.cc--ripple--animation {
+  animation: cc--ripple--content--ripple 0.3s ease-in;
+}
+
+@keyframes cc--ripple--content--ripple {
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}

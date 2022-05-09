@@ -49,6 +49,30 @@ const router = createRouter({
             title: 'clickOutside',
           },
         },
+        {
+          path: '/feat/countup',
+          name: 'countup',
+          component: () => import('@/views/countup/index.vue'),
+          meta: {
+            title: '数字自增长',
+          },
+        },
+        {
+          path: '/feat/ripple',
+          name: 'ripple',
+          component: () => import('@/views/ripple/index.vue'),
+          meta: {
+            title: '水波纹',
+          },
+        },
+        {
+          path: '/feat/hooksTable',
+          name: 'hooksTable',
+          component: () => import('@/views/table/tableView.vue'),
+          meta: {
+            title: 'hooks表格',
+          },
+        },
       ],
     },
   ],
