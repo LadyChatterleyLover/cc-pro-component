@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
+import zhCn from 'element-plus/es/locale/lang/zh-cn'
 import { transformIconName } from './utils/transformIconName'
 import * as Icons from '@element-plus/icons-vue'
 import CcProComponent from './components'
@@ -15,7 +16,9 @@ for (let i in Icons) {
 }
 
 app.use(router)
-app.use(ElementPlus)
+app.use(ElementPlus, {
+  locale: zhCn
+})
 app.use(CcProComponent)
 
 app.mount('#app')
