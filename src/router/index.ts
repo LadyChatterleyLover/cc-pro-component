@@ -18,7 +18,7 @@ const router = createRouter({
           },
         },
         {
-          path: '/chooseIcon',
+          path: '/component/chooseIcon',
           name: 'chooseIcon',
           component: () => import('@/views/chooseIcon/index.vue'),
           meta: {
@@ -26,7 +26,7 @@ const router = createRouter({
           },
         },
         {
-          path: '/chooseArea',
+          path: '/component/chooseArea',
           name: 'chooseArea',
           component: () => import('@/views/chooseArea/index.vue'),
           meta: {
@@ -34,11 +34,19 @@ const router = createRouter({
           },
         },
         {
-          path: '/menu',
+          path: '/component/menu',
           name: 'menu',
           component: () => import('@/views/menu/index.vue'),
           meta: {
             title: '导航菜单',
+          },
+        },
+        {
+          path: '/component/avatar',
+          name: 'avatar',
+          component: () => import('@/views/avatar/index.vue'),
+          meta: {
+            title: '头像组合',
           },
         },
         {

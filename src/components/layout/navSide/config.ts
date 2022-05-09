@@ -12,19 +12,31 @@ export const menuData: MenuItem[] = [
     index: '/',
   },
   {
-    icon: 'Check',
-    name: '图标选择器',
-    index: '/chooseIcon',
-  },
-  {
-    icon: 'Location',
-    name: '省市区选择',
-    index: '/chooseArea',
-  },
-  {
-    icon: 'Menu',
-    name: '导航菜单',
-    index: '/menu',
+    icon: 'Document',
+    name: '组件',
+    index: '/component',
+    children: [
+      {
+        icon: 'Check',
+        name: '图标选择器',
+        index: '/component/chooseIcon',
+      },
+      {
+        icon: 'Location',
+        name: '省市区选择',
+        index: '/component/chooseArea',
+      },
+      {
+        icon: 'Menu',
+        name: '导航菜单',
+        index: '/component/menu',
+      },
+      {
+        icon: 'User',
+        name: '头像组合',
+        index: '/component/avatar',
+      },
+    ],
   },
   {
     icon: 'Folder',
