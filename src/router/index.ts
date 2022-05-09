@@ -66,6 +66,14 @@ const router = createRouter({
           },
         },
         {
+          path: '/component/dataList',
+          name: 'dataList',
+          component: () => import('@/views/dataList/index.vue'),
+          meta: {
+            title: '倒计时',
+          },
+        },
+        {
           path: '/feat/clickOutside',
           name: 'clickOutside',
           component: () => import('@/views/clickOutside/index.vue'),
