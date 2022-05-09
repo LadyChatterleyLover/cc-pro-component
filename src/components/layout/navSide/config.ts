@@ -81,6 +81,11 @@ export const menuData: MenuItem[] = [
         name: '分段器',
         index: '/component/segmented',
       },
+      {
+        icon: 'Document',
+        name: '文本',
+        index: '/component/text',
+      },
     ],
   },
   {
@@ -106,7 +111,7 @@ export const menuData: MenuItem[] = [
       {
         name: 'hooks表格',
         index: '/feat/hooksTable',
-        icon: 'Document',
+        icon: 'DocumentCopy',
       },
       {
         name: '水印',

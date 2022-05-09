@@ -114,6 +114,14 @@ const router = createRouter({
           },
         },
         {
+          path: '/component/text',
+          name: 'text',
+          component: () => import('@/views/text/index.vue'),
+          meta: {
+            title: '文本',
+          },
+        },
+        {
           path: '/feat/clickOutside',
           name: 'clickOutside',
           component: () => import('@/views/clickOutside/index.vue'),

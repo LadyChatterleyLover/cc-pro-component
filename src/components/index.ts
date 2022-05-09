@@ -11,6 +11,7 @@ import SlideVerify from './slideVerify'
 import Split from './split'
 import Statistic from './statistic'
 import Segmented from './segmented'
+import Text from './text'
 
 const components = [
   Icon,
@@ -24,7 +25,8 @@ const components = [
   SlideVerify,
   Split,
   Statistic,
-  Segmented
+  Segmented,
+  Text
 ]
 
 export default {
