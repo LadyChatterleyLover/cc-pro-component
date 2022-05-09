@@ -71,6 +71,11 @@ export const menuData: MenuItem[] = [
         name: '分割面板',
         index: '/component/split',
       },
+      {
+        icon: 'Position',
+        name: '数字统计',
+        index: '/component/statistic',
+      },
     ],
   },
   {

@@ -98,6 +98,14 @@ const router = createRouter({
           },
         },
         {
+          path: '/component/statistic',
+          name: 'statistic',
+          component: () => import('@/views/statistic/index.vue'),
+          meta: {
+            title: '数字统计',
+          },
+        },
+        {
           path: '/feat/clickOutside',
           name: 'clickOutside',
           component: () => import('@/views/clickOutside/index.vue'),

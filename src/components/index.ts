@@ -9,6 +9,7 @@ import dataList from "./dataList"
 import rotateVerify from "./rotateVerify"
 import slideVerify from './slideVerify'
 import split from './split'
+import statistic from './statistic'
 
 const components = [
   Icon,
@@ -20,7 +21,8 @@ const components = [
   dataList,
   rotateVerify,
   slideVerify,
-  split
+  split,
+  statistic
 ]
 
 export default {

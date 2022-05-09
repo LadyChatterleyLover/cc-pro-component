@@ -31,8 +31,8 @@
 
 <script lang='ts' setup>
 import { withDefaults, ref, watch, onMounted, getCurrentInstance } from 'vue'
-import { CountUp, CountUpOptions } from 'countup.js'
-import { load } from '@vitejs/plugin-vue';
+import { CountUp } from 'countup.js'
+import type { CountUpOptions } from 'countup.js'
 
 const uid = getCurrentInstance()!.uid
 
