@@ -50,6 +50,14 @@ const router = createRouter({
           },
         },
         {
+          path: '/component/comment',
+          name: 'comment',
+          component: () => import('@/views/comment/index.vue'),
+          meta: {
+            title: '评论',
+          },
+        },
+        {
           path: '/feat/clickOutside',
           name: 'clickOutside',
           component: () => import('@/views/clickOutside/index.vue'),

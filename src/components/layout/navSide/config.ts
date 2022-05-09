@@ -36,6 +36,11 @@ export const menuData: MenuItem[] = [
         name: '头像组合',
         index: '/component/avatar',
       },
+      {
+        icon: 'Edit',
+        name: '评论',
+        index: '/component/comment',
+      },
     ],
   },
   {
