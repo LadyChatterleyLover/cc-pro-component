@@ -122,6 +122,14 @@ const router = createRouter({
           },
         },
         {
+          path: '/component/resizeBox',
+          name: 'resizeBox',
+          component: () => import('@/views/resizeBox/index.vue'),
+          meta: {
+            title: '伸缩框',
+          },
+        },
+        {
           path: '/feat/clickOutside',
           name: 'clickOutside',
           component: () => import('@/views/clickOutside/index.vue'),

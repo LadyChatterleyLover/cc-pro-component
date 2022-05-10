@@ -86,6 +86,11 @@ export const menuData: MenuItem[] = [
         name: '文本',
         index: '/component/text',
       },
+      {
+        icon: 'Expand',
+        name: '伸缩框',
+        index: '/component/resizeBox',
+      },
     ],
   },
   {
