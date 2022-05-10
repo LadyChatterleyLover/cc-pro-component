@@ -41,7 +41,6 @@ const props = withDefaults(
 )
 
 const slots = useSlots()?.default?.()
-console.log(slots)
 
 const length = computed(() => slots?.length)
 

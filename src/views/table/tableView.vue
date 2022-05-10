@@ -18,17 +18,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue"
-import { useTable } from "@/hooks/useTable"
+import { ref } from 'vue'
+import { useTable } from '@/hooks/useTable'
 
 interface Result {
   total: number
   list: any[]
 }
 
-const value = ref("")
+const value = ref('')
 
-const getTableData = ({ current, pageSize }: { current: number; pageSize: number }): Promise<Result<any>> => {
+const getTableData = ({ current, pageSize }: { current: number; pageSize: number }): Promise<Result> => {
   let query = value.value
     ? `current=${current}&pageSize=${pageSize}$name=${value.value}`
     : `current=${current}&pageSize=${pageSize}`
@@ -43,7 +43,7 @@ const getTableData = ({ current, pageSize }: { current: number; pageSize: number
     })
 }
 const { tableProps, refresh, sizeChange, currentChange } = useTable(getTableData)
-console.log("tableProps", tableProps)
+console.log('tableProps', tableProps)
 </script>
 
 <style scoped></style>
