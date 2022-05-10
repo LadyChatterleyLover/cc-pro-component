@@ -13,6 +13,7 @@ import Statistic from './statistic'
 import Segmented from './segmented'
 import Text from './text'
 import ResizeBox from './resizeBox'
+import checkCard from './checkCard'
 
 const components = [
   Icon,
@@ -29,6 +30,7 @@ const components = [
   Segmented,
   Text,
   ResizeBox,
+  checkCard,
 ]
 
 export default {

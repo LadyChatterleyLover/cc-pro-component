@@ -130,6 +130,14 @@ const router = createRouter({
           },
         },
         {
+          path: '/component/checkCard',
+          name: 'checkCard',
+          component: () => import('@/views/checkCard/index.vue'),
+          meta: {
+            title: '多选卡片',
+          },
+        },
+        {
           path: '/feat/clickOutside',
           name: 'clickOutside',
           component: () => import('@/views/clickOutside/index.vue'),

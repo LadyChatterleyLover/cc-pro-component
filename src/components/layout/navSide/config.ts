@@ -87,10 +87,15 @@ export const menuData: MenuItem[] = [
         index: '/component/text',
       },
       {
-        icon: 'Expand',
-        name: '伸缩框',
-        index: '/component/resizeBox',
+        icon: 'Check',
+        name: '多选卡片',
+        index: '/component/checkCard',
       },
+      // {
+      //   icon: 'Expand',
+      //   name: '伸缩框',
+      //   index: '/component/resizeBox',
+      // },
     ],
   },
   {
