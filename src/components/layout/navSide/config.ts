@@ -86,11 +86,6 @@ export const menuData: MenuItem[] = [
         name: '文本',
         index: '/component/text',
       },
-      {
-        icon: 'Check',
-        name: '多选卡片',
-        index: '/component/checkCard',
-      },
       // {
       //   icon: 'Expand',
       //   name: '伸缩框',
@@ -132,6 +127,18 @@ export const menuData: MenuItem[] = [
         name: '全屏',
         index: '/feat/fullScreen',
         icon: 'FullScreen',
+      },
+    ],
+  },
+  {
+    name: '高级组件',
+    icon: 'Grid',
+    index: '/proComponent',
+    children: [
+      {
+        icon: 'Check',
+        name: '多选卡片',
+        index: '/proComponent/checkCard',
       },
     ],
   },

@@ -11,40 +11,66 @@
     ]"
     @click="handleClick"
   >
-    <el-row class="cc-check-card-content">
-      <el-col :span="6" v-if="$slots.avatar || avatar">
-        <slot v-if="$slots.avatar"></slot>
-        <el-avatar :shape="shape" v-else :src="avatar"></el-avatar>
-      </el-col>
-      <el-col :span="avatar || $slots.avatar ? 12 : 24">
-        <el-row
-          style="margin-bottom: 6px"
-          v-if="$slots.title || title || extra || $slots.extra"
-          justify="space-between"
-        >
-          <el-col :span="extra || $slots.extra ? 20 : 24">
-            <slot v-if="$slots.title" name="title"></slot>
-            <div v-else>{{ title }}</div>
-          </el-col>
-          <el-col :span="$slots.extra || extra ? 4 : 0">
-            <slot v-if="$slots.extra" name="extra"></slot>
-            <div v-else>{{ extra }}</div>
-          </el-col>
+    <el-skeleton animated v-if="loading">
+      <template #template>
+        <el-row style="margin: -4px 0" :gutter="4">
+          <el-col :span="22"><el-skeleton-item variant="text" /></el-col>
         </el-row>
-        <el-row v-if="$slots.description || description">
-          <el-col
-            :span="24"
-            :style="{
-              color: disabled ? 'rgba(0, 0, 0, 0.25)' : '#8c8c8c',
-            }"
+        <el-row style="margin: -4px 0" :gutter="4">
+          <el-col :span="8"><el-skeleton-item variant="text" /></el-col>
+          <el-col :span="15"><el-skeleton-item variant="text" /></el-col>
+        </el-row>
+        <el-row style="margin: -4px 0" :gutter="4">
+          <el-col :span="6"><el-skeleton-item variant="text" /></el-col>
+          <el-col :span="18"><el-skeleton-item variant="text" /></el-col>
+        </el-row>
+        <el-row style="margin: -4px 0" :gutter="4">
+          <el-col :span="13"><el-skeleton-item variant="text" /></el-col>
+          <el-col :span="9"><el-skeleton-item variant="text" /></el-col>
+        </el-row>
+        <el-row style="margin: -4px 0" :gutter="4">
+          <el-col :span="4"><el-skeleton-item variant="text" /></el-col>
+          <el-col :span="3"><el-skeleton-item variant="text" /></el-col>
+          <el-col :span="16"><el-skeleton-item variant="text" /></el-col>
+        </el-row>
+      </template>
+    </el-skeleton>
+    <template v-else>
+      <el-row class="cc-check-card-content">
+        <el-col :span="6" v-if="$slots.avatar || avatar">
+          <slot v-if="$slots.avatar"></slot>
+          <el-avatar :shape="shape" v-else :src="avatar"></el-avatar>
+        </el-col>
+        <el-col :span="avatar || $slots.avatar ? 18 : 24">
+          <el-row
+            style="margin-bottom: 6px"
+            v-if="$slots.title || title || extra || $slots.extra"
+            justify="space-between"
           >
-            <slot v-if="$slots.description" name="description"></slot>
-            <div v-else>{{ description }}</div>
-          </el-col>
-        </el-row>
-      </el-col>
-    </el-row>
-    <div class="cc-check-card-icon" v-if="checked"></div>
+            <el-col :span="extra || $slots.extra ? 20 : 24">
+              <slot v-if="$slots.title" name="title"></slot>
+              <div v-else>{{ title }}</div>
+            </el-col>
+            <el-col :span="$slots.extra || extra ? 4 : 0" style="text-align: center">
+              <slot v-if="$slots.extra" name="extra"></slot>
+              <div v-else>{{ extra }}</div>
+            </el-col>
+          </el-row>
+          <el-row v-if="$slots.description || description">
+            <el-col
+              :span="24"
+              :style="{
+                color: disabled ? 'rgba(0, 0, 0, 0.25)' : '#8c8c8c',
+              }"
+            >
+              <slot v-if="$slots.description" name="description"></slot>
+              <div v-else>{{ description }}</div>
+            </el-col>
+          </el-row>
+        </el-col>
+      </el-row>
+      <div class="cc-check-card-icon" v-if="checked"></div>
+    </template>
   </div>
 </template>
 
@@ -81,13 +107,6 @@ const props = withDefaults(
 const emits = defineEmits(['change', 'click', 'update:modelValue'])
 
 const checked = ref<boolean>(false)
-// const bordered = inject('bordered')
-// // 当前选中
-// const current = inject('current')
-// // 尺寸
-// const size = inject('size')
-// // 是否可以多选
-// const multiple = inject('multiple')
 
 const handleClick = () => {
   if (props.disabled) {

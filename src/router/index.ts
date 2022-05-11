@@ -130,7 +130,7 @@ const router = createRouter({
           },
         },
         {
-          path: '/component/checkCard',
+          path: '/proComponent/checkCard',
           name: 'checkCard',
           component: () => import('@/views/checkCard/index.vue'),
           meta: {

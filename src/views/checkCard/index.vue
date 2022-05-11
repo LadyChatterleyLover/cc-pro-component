@@ -75,6 +75,19 @@
         </el-dropdown>
       </template>
     </cc-check-card>
+    <br />
+    <br />
+    <h3>加载中</h3>
+    <br />
+    <cc-check-card title="Card title" description="This is the description" loading></cc-check-card>
+    <br />
+    <br />
+    <h3>应用列表示例</h3>
+    <br />
+    <cc-check-card-group :options="options"></cc-check-card-group>
+    <br />
+    <br />
+    <br />
   </div>
 </template>
 
@@ -84,6 +97,39 @@ import { ref } from 'vue'
 const size = ref('default')
 const checked = ref(true)
 const checks = ref(['A', 'B'])
+
+const options = [
+  {
+    title: '图像分类',
+    avatar: 'https://gw.alipayobjects.com/zos/bmw-prod/ae0adacf-9456-4ed3-b1ab-51e4417d8d0c.svg',
+    description: '这是一段关于该算法的说明',
+    value: 'A',
+  },
+  {
+    title: '图像分类',
+    avatar: 'https://gw.alipayobjects.com/zos/bmw-prod/ae0adacf-9456-4ed3-b1ab-51e4417d8d0c.svg',
+    description: '这是一段关于该算法的说明',
+    value: 'B',
+  },
+  {
+    title: '图像分类',
+    avatar: 'https://gw.alipayobjects.com/zos/bmw-prod/ae0adacf-9456-4ed3-b1ab-51e4417d8d0c.svg',
+    description: '这是一段关于该算法的说明',
+    value: 'C',
+  },
+  {
+    title: '图像分类',
+    avatar: 'https://gw.alipayobjects.com/zos/bmw-prod/ae0adacf-9456-4ed3-b1ab-51e4417d8d0c.svg',
+    description: '这是一段关于该算法的说明',
+    value: 'D',
+  },
+  {
+    title: '图像分类',
+    avatar: 'https://gw.alipayobjects.com/zos/bmw-prod/ae0adacf-9456-4ed3-b1ab-51e4417d8d0c.svg',
+    description: '这是一段关于该算法的说明',
+    value: 'F',
+  },
+]
 </script>
 
 <style scoped lang="scss">
