@@ -145,6 +145,11 @@ export const menuData: MenuItem[] = [
         name: '多选卡片',
         index: '/proComponent/checkCard',
       },
+      {
+        icon: 'Connection',
+        name: '高级列表',
+        index: '/proComponent/list',
+      },
     ],
   },
 ]

@@ -146,6 +146,14 @@ const router = createRouter({
           },
         },
         {
+          path: '/proComponent/list',
+          name: 'list',
+          component: () => import('@/views/list/index.vue'),
+          meta: {
+            title: '高级列表',
+          },
+        },
+        {
           path: '/feat/clickOutside',
           name: 'clickOutside',
           component: () => import('@/views/clickOutside/index.vue'),

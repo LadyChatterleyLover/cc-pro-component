@@ -15,6 +15,7 @@ import Text from './text'
 import ResizeBox from './resizeBox'
 import checkCard from './checkCard'
 import Card from './card'
+import List from './list'
 
 const components = [
   Icon,
@@ -33,6 +34,7 @@ const components = [
   ResizeBox,
   checkCard,
   Card,
+  List
 ]
 
 export default {
