@@ -130,6 +130,14 @@ const router = createRouter({
           },
         },
         {
+          path: '/proComponent/card',
+          name: 'card',
+          component: () => import('@/views/card/index.vue'),
+          meta: {
+            title: '高级卡片',
+          },
+        },
+        {
           path: '/proComponent/checkCard',
           name: 'checkCard',
           component: () => import('@/views/checkCard/index.vue'),

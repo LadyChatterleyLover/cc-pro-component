@@ -136,6 +136,11 @@ export const menuData: MenuItem[] = [
     index: '/proComponent',
     children: [
       {
+        icon: 'Tickets',
+        name: '高级卡片',
+        index: '/proComponent/card',
+      },
+      {
         icon: 'Check',
         name: '多选卡片',
         index: '/proComponent/checkCard',

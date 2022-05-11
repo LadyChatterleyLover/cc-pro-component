@@ -6,54 +6,63 @@
       <div
         v-if="showDays && day > 0"
         :style="{ fontSize: separatorSize + 'px', color: separatorColor, margin: `0 ${gutter}rpx` }"
-      >{{ separator === 'colon' ? ':' : '天' }}</div>
+      >
+        {{ separator === 'colon' ? ':' : '天' }}
+      </div>
       <div v-if="showHours">{{ hourValue }}</div>
       <div
         v-if="showHours"
         :style="{ fontSize: separatorSize + 'px', color: separatorColor, margin: `0 ${gutter}rpx` }"
-      >{{ separator === 'colon' ? ':' : '时' }}</div>
+      >
+        {{ separator === 'colon' ? ':' : '时' }}
+      </div>
       <div v-if="showMinutes">{{ minuteValue }}</div>
       <div
         v-if="showMinutes"
         :style="{ fontSize: separatorSize + 'px', color: separatorColor, margin: `0 ${gutter}rpx` }"
-      >{{ separator === 'colon' ? ':' : '分' }}</div>
+      >
+        {{ separator === 'colon' ? ':' : '分' }}
+      </div>
       <div v-if="showSeconds">{{ secondValue }}</div>
       <div
         v-if="showSeconds"
         :style="{ fontSize: separatorSize + 'px', color: separatorColor, margin: `0 ${gutter}rpx` }"
-      >{{ separator === 'colon' ? '' : '秒' }}</div>
+      >
+        {{ separator === 'colon' ? '' : '秒' }}
+      </div>
     </template>
   </div>
 </template>
 
 <script setup lang="ts">
-import { withDefaults, defineProps, defineEmits, ref, useSlots, computed, onMounted, onUnmounted, watch } from 'vue'
+import { withDefaults, ref, useSlots, computed, onMounted, onUnmounted, watch } from 'vue'
 
-
-const props = withDefaults(defineProps<{
-  time?: number,
-  separator?: string,
-  separatorSize?: number | string,
-  separatorColor?: string,
-  gutter?: number | string,
-  showDays?: boolean,
-  showHours?: boolean,
-  showMinutes?: boolean,
-  showSeconds?: boolean,
-  start?: boolean
-}>(), {
-  time: 0,
-  separator: 'colon',
-  separatorSize: 16,
-  separatorColor: '#000',
-  gutter: 0,
-  showDays: false,
-  showHours: true,
-  showMinutes: true,
-  showSeconds: true,
-  start: true
-})
-
+const props = withDefaults(
+  defineProps<{
+    time?: number
+    separator?: string
+    separatorSize?: number | string
+    separatorColor?: string
+    gutter?: number | string
+    showDays?: boolean
+    showHours?: boolean
+    showMinutes?: boolean
+    showSeconds?: boolean
+    start?: boolean
+  }>(),
+  {
+    time: 0,
+    separator: 'colon',
+    separatorSize: 16,
+    separatorColor: '#000',
+    gutter: 0,
+    showDays: false,
+    showHours: true,
+    showMinutes: true,
+    showSeconds: true,
+    start: true,
+  }
+)
 
 const slots = useSlots()
 const emits = defineEmits(['end', 'change'])
@@ -66,14 +75,11 @@ const timer = ref<any>()
 const timeValue = ref<number>(0)
 const timeData = ref<any>({})
 
-
 const defaultSlots = ref()
-
 
 const formatNum = (num: number) => {
   return num < 10 ? '0' + num : '' + num
 }
-
 
 const countDown = () => {
   clearInterval(timer.value)
@@ -143,18 +149,25 @@ onUnmounted(() => {
   timer.value = null
 })
 
-watch(() => timeValue.value, val => {
-  timeData.value.days = dayValue.value
-  timeData.value.hours = hourValue.value
-  timeData.value.minutes = minuteValue.value
-  timeData.value.seconds = secondValue.value
-  emits('change', val)
-  if (val === 0) emits('end')
-}, { deep: true })
+watch(
+  () => timeValue.value,
+  (val) => {
+    timeData.value.days = dayValue.value
+    timeData.value.hours = hourValue.value
+    timeData.value.minutes = minuteValue.value
+    timeData.value.seconds = secondValue.value
+    emits('change', val)
+    if (val === 0) emits('end')
+  },
+  { deep: true }
+)
 
-watch(() => props.start, val => {
-  if (val) countDown()
-})
+watch(
+  () => props.start,
+  (val) => {
+    if (val) countDown()
+  }
+)
 </script>
 
 <style scoped lang="scss">

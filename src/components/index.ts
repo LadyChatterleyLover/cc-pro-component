@@ -14,6 +14,7 @@ import Segmented from './segmented'
 import Text from './text'
 import ResizeBox from './resizeBox'
 import checkCard from './checkCard'
+import Card from './card'
 
 const components = [
   Icon,
@@ -31,6 +32,7 @@ const components = [
   Text,
   ResizeBox,
   checkCard,
+  Card,
 ]
 
 export default {
