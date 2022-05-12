@@ -1,15 +1,29 @@
 <template>
   <div class="side">
-    <cc-menu unique-opened :collapse="collapse" :data="menuData" router :defaultActive="$route.path"></cc-menu>
+    <cc-menu
+      @clickItem="clickItem"
+      unique-opened
+      :collapse="collapse"
+      :data="menuData"
+      router
+      :defaultActive="$route.path"
+    ></cc-menu>
   </div>
 </template>
 
 <script setup lang="ts">
-import { menuData } from './config'
+import { menuData } from "./config"
+import type { MenuItem } from "./config"
 
 defineProps<{
   collapse: boolean
 }>()
+
+const emits = defineEmits(['clickItem'])
+
+const clickItem = (item: MenuItem) => {
+  emits('clickItem', item)
+}
 </script>
 
 <style scoped lang="scss">

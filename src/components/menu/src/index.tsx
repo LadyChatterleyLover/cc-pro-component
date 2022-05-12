@@ -1,8 +1,8 @@
-import { defineComponent, useAttrs } from 'vue'
-import type { PropType } from 'vue'
-import type { MenuItem } from './types'
-import * as Icons from '@element-plus/icons-vue'
-import './index.scss'
+import { defineComponent, useAttrs } from "vue"
+import type { PropType } from "vue"
+import type { MenuItem } from "./types"
+import * as Icons from "@element-plus/icons-vue"
+import "./index.scss"
 
 export default defineComponent({
   props: {
@@ -14,7 +14,7 @@ export default defineComponent({
     // 默认选中的菜单
     defaultActive: {
       type: String,
-      default: '',
+      default: "",
     },
     // 是否是路由模式
     router: {
@@ -24,22 +24,22 @@ export default defineComponent({
     // 菜单标题的键名
     name: {
       type: String,
-      default: 'name',
+      default: "name",
     },
     // 菜单标识的键名
     index: {
       type: String,
-      default: 'index',
+      default: "index",
     },
     // 菜单图标的键名
     icon: {
       type: String,
-      default: 'icon',
+      default: "icon",
     },
     // 菜单子菜单的键名
     children: {
       type: String,
-      default: 'children',
+      default: "children",
     },
   },
   setup(props, ctx) {
@@ -70,22 +70,24 @@ export default defineComponent({
         }
         // 正常渲染普通的菜单
         return (
-          <el-menu-item index={item[props.index]}>
-             {item.i ? <item.i /> : null}
+          <el-menu-item index={item[props.index]} onClick={(item: MenuItem) => onClickItem(item)}>
+            {item.i ? <item.i /> : null}
             <span>{item[props.name]}</span>
           </el-menu-item>
         )
       })
     }
     const attrs = useAttrs()
+    const onClickItem = (item: MenuItem) => {
+      ctx.emit("clickItem", item)
+    }
     return () => {
       return (
         <el-menu
-          class='menu-icon-svg cc-menu-vertical'
+          class="menu-icon-svg cc-menu-vertical"
           default-active={props.defaultActive}
           router={props.router}
-          {...attrs}
-        >
+          {...attrs}>
           {renderMenu(props.data)}
         </el-menu>
       )
