@@ -77,7 +77,7 @@
     <br />
     <h3>总分/主次关系</h3>
     <br />
-    <cc-statistic-card-group direction="row">
+    <cc-statistic-card-group vertical>
       <cc-statistic-card title="总流量(人次)" :value="12345"> </cc-statistic-card>
       <cc-statistic-card title="总流量(人次)" :value="12345" description="占比61.5%">
         <template #chart>
@@ -98,6 +98,74 @@
         </template>
       </cc-statistic-card>
     </cc-statistic-card-group>
+    <br />
+    <br />
+    <h3>总分/业绩目标</h3>
+    <br />
+    <cc-card split="vertical">
+      <cc-card :bordered="false">
+        <cc-statistic-card :bordered="false" title="财年业绩目标" :value="82.6" description="日同比61.5%">
+          <template #suffix>亿</template>
+          <template #chart>
+            <el-image
+              src="https://gw.alipayobjects.com/zos/alicdn/PmKfn4qvD/mubiaowancheng-lan.svg"
+              alt="折线图"
+              style="width: 100%"
+            ></el-image>
+          </template>
+          <template #footer>
+            <div style="display: flex; justify-content: space-between">
+              <div>累计注册数</div>
+              <div>15.1万</div>
+            </div>
+            <div style="display: flex; justify-content: space-between">
+              <div>本月注册数</div>
+              <div>15.1万</div>
+            </div>
+            <div style="display: flex; justify-content: space-between">
+              <div>本月注册数</div>
+              <div>15.1万</div>
+            </div>
+          </template>
+        </cc-statistic-card>
+      </cc-card>
+      <cc-card>
+        <cc-statistic-card :bordered="false" title="财年业绩目标" :value="82.6" description="日同比61.5%">
+          <template #suffix>亿</template>
+          <template #chart>
+            <el-image
+              src="https://gw.alipayobjects.com/zos/alicdn/zevpN7Nv_/xiaozhexiantu.svg"
+              alt="折线图"
+              style="width: 100%"
+            ></el-image>
+          </template>
+        </cc-statistic-card>
+      </cc-card>
+      <cc-card>
+        <cc-statistic-card :bordered="false" title="财年业绩目标" :value="82.6" description="日同比61.5%">
+          <template #suffix>亿</template>
+          <template #chart>
+            <el-image
+              src="https://gw.alipayobjects.com/zos/alicdn/zevpN7Nv_/xiaozhexiantu.svg"
+              alt="折线图"
+              style="width: 100%"
+            ></el-image>
+          </template>
+        </cc-statistic-card>
+      </cc-card>
+      <cc-card>
+        <cc-statistic-card :bordered="false" title="财年业绩目标" :value="82.6" description="日同比61.5%">
+          <template #suffix>亿</template>
+          <template #chart>
+            <el-image
+              src="https://gw.alipayobjects.com/zos/alicdn/zevpN7Nv_/xiaozhexiantu.svg"
+              alt="折线图"
+              style="width: 100%"
+            ></el-image>
+          </template>
+        </cc-statistic-card>
+      </cc-card>
+    </cc-card>
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 <template>
-  <cc-card class="cc-statistic-card" :loading="loading" :bordered="bordered" v-if="direction !== 'row'">
+  <cc-card class="cc-statistic-card" :loading="loading" :bordered="bordered" v-if="!vertical">
     <template #title>
       <div>
         <slot v-if="$slots.title" name="title"></slot>
@@ -85,8 +85,8 @@ withDefaults(
   }
 )
 
-const direction: any = computed(() => {
-  return getCurrentInstance()?.parent?.props?.direction
+const vertical: any = computed(() => {
+  return getCurrentInstance()?.parent?.props?.vertical
 })
 </script>
 

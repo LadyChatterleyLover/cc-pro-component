@@ -1,17 +1,17 @@
 <template>
-  <div class="cc-statistic-card-group" :style="{ flexDirection: direction }">
+  <div class="cc-statistic-card-group" :style="{ flexDirection: vertical ? 'row' : 'column' }">
     <slot></slot>
   </div>
 </template>
 
 <script setup lang="ts">
-import { onMounted, provide } from 'vue'
+import { onMounted } from 'vue'
 const props = withDefaults(
   defineProps<{
-    direction?: 'row' | 'column'
+    vertical?: boolean
   }>(),
   {
-    direction: 'column',
+    vertical: true,
   }
 )
 
@@ -22,7 +22,7 @@ onMounted(() => {
     item.classList.remove('cc-card-bordered')
   })
   statisticCards.map((item, index) => {
-    if (index !== cards.length && props.direction === 'row') {
+    if (index !== statisticCards.length && props.vertical) {
       item.classList.add('cc-statistic-card-bordered')
     }
   })
