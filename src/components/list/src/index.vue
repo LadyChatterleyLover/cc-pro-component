@@ -99,22 +99,25 @@
         </el-col>
       </el-row>
     </div>
+    <div ref="loadingRef">
+      <slot name="loader"></slot>
+    </div>
     <div class="cc-list-pagination" v-if="pagination">
-      <el-pagination 
-      v-model:currentPage="paginationOpts!.currentPage"
-      v-model:page-size="paginationOpts!.pageSize"
-      :layout="paginationOpts!.layout"
-      :total="paginationOpts!.total"
-      :page-sizes="paginationOpts!.pageSizes"
-      @current-change="currentChange"
-      @size-change="sizeChange"
+      <el-pagination
+        v-model:currentPage="paginationOpts!.currentPage"
+        v-model:page-size="paginationOpts!.pageSize"
+        :layout="paginationOpts!.layout"
+        :total="paginationOpts!.total"
+        :page-sizes="paginationOpts!.pageSizes"
+        @current-change="currentChange"
+        @size-change="sizeChange"
       ></el-pagination>
     </div>
   </cc-card>
 </template>
 
 <script lang="ts" setup>
-import { ref, watch } from "vue"
+import { ref, watch, onMounted, onUnmounted } from "vue"
 import cloneDeep from "lodash/cloneDeep"
 
 export interface ListItem {
@@ -150,6 +153,7 @@ const props = withDefaults(
     split?: boolean
     size?: "default" | "small" | "large"
     pagination?: boolean
+    loadMore?: () => void
     paginationOptions?: {
       layout?: string
       pageSize?: number
@@ -181,13 +185,15 @@ const emits = defineEmits([
   "select",
   "current-change",
   "size-change",
-  "update:paginationOptions"
+  "update:paginationOptions",
 ])
 
 const list = ref<ListItem[]>([])
 const currentEdit = ref<ListItem[]>([])
 const selectList = ref<ListItem[]>([])
 const paginationOpts = ref<any>()
+const loadingRef = ref<HTMLElement>()
+const intersectionObserver = ref<IntersectionObserver | null>(null)
 
 const clickItem = (item: ListItem, index: number) => {
   emits("click", { item, index })
@@ -259,11 +265,11 @@ const cancelSelect = () => {
 
 const currentChange = (val: number) => {
   paginationOpts.value.current = val
-  emits('current-change', val)
+  emits("current-change", val)
 }
 const sizeChange = (val: number) => {
   paginationOpts.value.pageSize = val
-  emits('size-change', val)
+  emits("size-change", val)
 }
 
 watch(
@@ -287,12 +293,35 @@ watch(
   { deep: true, immediate: true }
 )
 
-watch(() => props.paginationOptions, val => {
-  paginationOpts.value = val
-}, {immediate: true})
+watch(
+  () => props.paginationOptions,
+  (val) => {
+    paginationOpts.value = val
+  },
+  { immediate: true }
+)
 
-watch(() => paginationOpts.value, val => {``
-  emits('update:paginationOptions', val)
+watch(
+  () => paginationOpts.value,
+  (val) => {
+    emits("update:paginationOptions", val)
+  }
+)
+
+onMounted(() => {
+  intersectionObserver.value = new IntersectionObserver((entries) => {
+    if (entries[0].intersectionRatio > 0) {
+      // intersectionRatio大于0，代表监听的元素由不可见变成可见，进行数据请求
+      props.loadMore?.()
+    }
+  })
+  // 监听Loading div的可见性
+  intersectionObserver.value.observe(loadingRef.value!)
+})
+onUnmounted(() => {
+  intersectionObserver.value!.unobserve(loadingRef.value!)
+  intersectionObserver.value!.disconnect()
+  intersectionObserver.value = null
 })
 </script>
 

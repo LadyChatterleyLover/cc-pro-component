@@ -130,6 +130,29 @@
         <el-button type="text">查看</el-button>
       </template>
     </cc-list>
+    <br />
+    <br />
+    <h3>无限滚动，性能更好</h3>
+    <br />
+    <div style="height: 400px; overflow: auto; padding: 0 16px; border: 1px solid rgba(140, 140, 140, 0.35)">
+      <cc-list :dataSource="data" :loadMore="loadMore" headerTitle="基础列表" tooltip="基础列表的配置">
+        <template #toolBar>
+          <el-button type="primary">新建</el-button>
+        </template>
+        <template #subTitle>
+          <el-tag style="margin-right: 6px">Element Plus</el-tag>
+          <el-tag type="success">Pro Component</el-tag>
+        </template>
+        <template #actionSlot>
+          <el-button type="text">报警</el-button>
+          <el-button type="text">链路</el-button>
+          <el-button type="text">查看</el-button>
+        </template>
+        <template #loader>
+          <div style="text-align: center; margin: 16px 0">加载中...</div>
+        </template>
+      </cc-list>
+    </div>
   </div>
 </template>
 
@@ -207,14 +230,16 @@ const dataSource1 = [
 const dataSource2 = ref<any[]>([])
 const size = ref("default")
 const split = ref(true)
+const loading = ref(false)
+const data = ref<any[]>([])
 
 const paginationOptions = ref<any>({
-        pageSize: 10,
-        total: 0,
-        currentPage: 1,
-        pageSizes: [10, 20, 30, 40, 50],
-        layout: "total, sizes, prev, pager, next, jumper"
-      })
+  pageSize: 10,
+  total: 0,
+  currentPage: 1,
+  pageSizes: [10, 20, 30, 40, 50],
+  layout: "total, sizes, prev, pager, next, jumper",
+})
 const current = ref(1)
 const pageSize = ref(10)
 
@@ -234,6 +259,32 @@ const currentChange = (val: number) => {
 const sizeChange = (val: number) => {
   pageSize.value = val
   getData()
+}
+
+const loadMore = () => {
+  if (loading.value) {
+    return
+  }
+  loading.value = true
+  fetch("https://randomuser.me/api/?results=10&inc=name,gender,email,nat,picture&noinfo")
+    .then((res) => res.json())
+    .then((body) => {
+      let arr = body.results.map((item: any) => {
+        return {
+          avatar: item.picture.large,
+          name: item.name.last,
+          desc: item.email,
+          subTitleSlot: "subTitle",
+          actionSlot: "actionSlot",
+          expandSlot: "expandSlot",
+        }
+      })
+      data.value.push(...arr)
+      loading.value = false
+    })
+    .catch(() => {
+      loading.value = false
+    })
 }
 </script>
 
