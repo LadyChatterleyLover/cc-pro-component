@@ -23,7 +23,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, nextTick, defineEmits, getCurrentInstance, computed } from "vue"
+import { ref, onMounted, nextTick, getCurrentInstance, computed } from 'vue'
 export interface OptionsItem {
   label: string
   value?: string
@@ -37,15 +37,15 @@ const props = withDefaults(
     options: string[] | number[] | OptionsItem[]
     block?: boolean
     disabled?: boolean
-    size?: "default" | "small" | "large"
+    size?: 'default' | 'small' | 'large'
   }>(),
   {
     block: false,
     disabled: false,
-    size: "default",
+    size: 'default',
   }
 )
-const emits = defineEmits(["update:modelValue", "change"])
+const emits = defineEmits(['update:modelValue', 'change'])
 
 const currentIndex = ref<number>(Number(props.modelValue))
 const maskWidth = ref<number>(0)
@@ -53,7 +53,7 @@ const maskHeight = ref<number>(0)
 const maskLeft = ref<number>(0)
 
 const isObject = (val: any) => {
-  return typeof val === "object" && val !== null
+  return typeof val === 'object' && val !== null
 }
 
 const clickItem = (item: string | number | OptionsItem, index: number) => {
@@ -62,11 +62,11 @@ const clickItem = (item: string | number | OptionsItem, index: number) => {
   }
   currentIndex.value = index
   init()
-  emits("change", {
+  emits('change', {
     item,
     index,
   })
-  emits("update:modelValue", currentIndex.value)
+  emits('update:modelValue', currentIndex.value)
 }
 const init = () => {
   const el = document.getElementById(`cc-segmented-item-${id}-${currentIndex.value}`)
@@ -76,20 +76,20 @@ const init = () => {
 }
 
 const heightStyle = computed(() => {
-  if (props.size === "default") {
+  if (props.size === 'default') {
     return {
-      minHeight: "28px",
-      lineHeight: "28px",
+      minHeight: '28px',
+      lineHeight: '28px',
     }
-  } else if (props.size === "small") {
+  } else if (props.size === 'small') {
     return {
-      minHeight: "20px",
-      lineHeight: "20px",
+      minHeight: '20px',
+      lineHeight: '20px',
     }
-  } else if (props.size === "large") {
+  } else if (props.size === 'large') {
     return {
-      minHeight: "36px",
-      lineHeight: "36px",
+      minHeight: '36px',
+      lineHeight: '36px',
     }
   }
 })

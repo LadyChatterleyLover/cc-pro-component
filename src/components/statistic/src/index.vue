@@ -29,35 +29,38 @@
   </div>
 </template>
 
-<script lang='ts' setup>
+<script lang="ts" setup>
 import { withDefaults, ref, watch, onMounted, getCurrentInstance } from 'vue'
 import { CountUp } from 'countup.js'
 import type { CountUpOptions } from 'countup.js'
 
 const uid = getCurrentInstance()!.uid
 
-const props = withDefaults(defineProps<{
-  title?: string,
-  value: number,
-  extra?: string,
-  precision?: number,
-  separator?: string,
-  showGroupSeparator?: boolean,
-  start?: boolean,
-  loading?: boolean,
-  animation?: boolean,
-  animationDuration?: number
-}>(), {
-  title: '',
-  extra: '',
-  precision: 0,
-  separator: ',',
-  showGroupSeparator: false,
-  start: true,
-  loading: false,
-  animation: false,
-  animationDuration: 2000
-})
+const props = withDefaults(
+  defineProps<{
+    title?: string
+    value: number
+    extra?: string
+    precision?: number
+    separator?: string
+    showGroupSeparator?: boolean
+    start?: boolean
+    loading?: boolean
+    animation?: boolean
+    animationDuration?: number
+  }>(),
+  {
+    title: '',
+    extra: '',
+    precision: 0,
+    separator: ',',
+    showGroupSeparator: false,
+    start: true,
+    loading: false,
+    animation: false,
+    animationDuration: 2000,
+  }
+)
 
 const num = ref<string>('')
 const countup = ref<CountUp | null>(null)
@@ -75,10 +78,12 @@ const renderNum = () => {
   let strArr = arr.map((item) => {
     return item.join('')
   })
-  strArr.map(item => {
-    num.value += `${item}${props.separator}`
+  strArr.map((item) => {
+    num.value += `${item}${props.showGroupSeparator ? props.separator : ''}`
   })
   num.value = num.value.slice(0, num.value.length - 1)
+  let n = num.value.split('.')
+  num.value = n.length > 1 ? n[0] + '.' + n[1].slice(1) : n[0]
   if (props.precision > 0) {
     num.value += '.'
     for (let i = 0; i < props.precision; i++) {
@@ -91,8 +96,8 @@ onMounted(() => {
     let options: CountUpOptions = {
       startVal: 0,
       duration: props.animationDuration / 1000,
-      separator: props.separator,
-      decimalPlaces: props.precision
+      separator: props.showGroupSeparator ? props.separator : '',
+      decimalPlaces: props.precision,
     }
     countup.value = new CountUp(`cc-statistic-${uid}`, props.value, options)
     if (props.start) countup.value.start()
@@ -101,23 +106,26 @@ onMounted(() => {
   }
 })
 
-watch(() => props.value, () => {
-  if (props.animation) {
-    countup.value!.start()
-  } else {
-    renderNum()
+watch(
+  () => props.value,
+  () => {
+    if (props.animation) {
+      countup.value!.start()
+    } else {
+      renderNum()
+    }
   }
-})
+)
 
-watch(() => props.start, val => {
-  if (val) countup.value!.start()
-})
-
-
-
+watch(
+  () => props.start,
+  (val) => {
+    if (val) countup.value!.start()
+  }
+)
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .cc-statistic {
   &-title {
     margin-bottom: 4px;

@@ -107,7 +107,7 @@ const router = createRouter({
         },
         {
           path: '/component/segmented',
-          name: 'statistic',
+          name: 'segmented',
           component: () => import('@/views/segmented/index.vue'),
           meta: {
             title: '分段器',
@@ -127,6 +127,14 @@ const router = createRouter({
           component: () => import('@/views/resizeBox/index.vue'),
           meta: {
             title: '伸缩框',
+          },
+        },
+        {
+          path: '/proComponent/statisticCard',
+          name: 'statisticCard',
+          component: () => import('@/views/statisticCard/index.vue'),
+          meta: {
+            title: '选项卡',
           },
         },
         {

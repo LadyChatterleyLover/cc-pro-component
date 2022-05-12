@@ -17,6 +17,7 @@ import checkCard from './checkCard'
 import Card from './card'
 import List from './list'
 import Skeleton from './skeleton'
+import StatisticCard from './statisticCard'
 
 const components = [
   Icon,
@@ -36,7 +37,8 @@ const components = [
   checkCard,
   Card,
   List,
-  Skeleton
+  Skeleton,
+  StatisticCard,
 ]
 
 export default {
