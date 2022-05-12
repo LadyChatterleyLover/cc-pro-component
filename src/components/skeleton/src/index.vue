@@ -83,23 +83,56 @@
                 </template>
               </el-skeleton>
             </div>
-            <div class="flex" style="margin-top: 20px;">
+            <div class="flex" style="margin-top: 20px">
               <el-skeleton animated>
                 <template #template>
                   <div class="flex">
-                    <el-skeleton-item variant="h1" style="width: 214px;height: 32px; margin-bottom: 8px"></el-skeleton-item>
+                    <el-skeleton-item
+                      variant="h1"
+                      style="width: 214px; height: 32px; margin-bottom: 8px"
+                    ></el-skeleton-item>
                   </div>
                   <div class="flex">
-                    <el-skeleton-item variant="h1" style="width: 328px;height: 24px;"></el-skeleton-item>
+                    <el-skeleton-item variant="h1" style="width: 328px; height: 24px"></el-skeleton-item>
                   </div>
                   <el-space class="flex" :size="8" style="margin-top: 24px">
-                    <el-skeleton-item variant="h1" style="width: 116px;height: 32px;"></el-skeleton-item>
-                    <el-skeleton-item variant="h1" style="width: 116px;height: 32px;"></el-skeleton-item>
+                    <el-skeleton-item variant="h1" style="width: 116px; height: 32px"></el-skeleton-item>
+                    <el-skeleton-item variant="h1" style="width: 116px; height: 32px"></el-skeleton-item>
                   </el-space>
                 </template>
               </el-skeleton>
             </div>
           </div>
+        </el-card>
+      </div>
+    </template>
+    <template v-if="type === 'descriptions'">
+      <div>
+        <el-skeleton>
+          <template #template>
+            <el-skeleton-item style="width: 185px" variant="h3"></el-skeleton-item>
+          </template>
+        </el-skeleton>
+        <el-skeleton animated>
+          <template #template>
+            <el-skeleton-item style="width: 48px; height: 24px"></el-skeleton-item>
+          </template>
+        </el-skeleton>
+        <br />
+        <el-card>
+          <div v-for="item in 2" :key="item" style="margin-bottom: 16px">
+            <el-skeleton animated>
+              <template #template>
+                <div><el-skeleton-item variant="h1" style="width: 100px; margin-bottom: 16px"></el-skeleton-item></div>
+                <div class="cc-skeleton-descriptions-content" v-for="item in 3" :key="item">
+                  <div class="cc-skeleton-descriptions-content-item" v-for="item1 in 3" :key="item1">
+                   <el-skeleton-item style="height: 16px;margin-top: 8px;"></el-skeleton-item>
+                  </div>
+                </div>
+              </template>
+            </el-skeleton>
+          </div>
+          <el-divider></el-divider>
         </el-card>
       </div>
     </template>
@@ -155,6 +188,23 @@ const props = withDefaults(
     align-items: center;
     flex-direction: column;
     padding: 128px;
+  }
+  &-descriptions {
+    &-content {
+      width: 100%;
+      justify-content: space-between;
+      display: flex;
+      &-item {
+        flex: 1;
+        padding: 0 24px;
+        &:first-child {
+          padding-left: 0;
+        }
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+    }
   }
 }
 .flex {

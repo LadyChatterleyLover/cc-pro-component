@@ -8,6 +8,11 @@
    <h3>结果页</h3>
    <br>
    <cc-skeleton type="result"></cc-skeleton>
+   <br>
+   <br>
+   <h3>详情页</h3>
+   <br>
+   <cc-skeleton type="descriptions"></cc-skeleton>
   </div>
 </template>
 
