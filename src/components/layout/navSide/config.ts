@@ -150,6 +150,11 @@ export const menuData: MenuItem[] = [
         name: '高级列表',
         index: '/proComponent/list',
       },
+      {
+        icon: 'More',
+        name: '骨架屏',
+        index: '/proComponent/skeleton',
+      },
     ],
   },
 ]

@@ -154,6 +154,14 @@ const router = createRouter({
           },
         },
         {
+          path: '/proComponent/skeleton',
+          name: 'skeleton',
+          component: () => import('@/views/skeleton/index.vue'),
+          meta: {
+            title: '骨架屏',
+          },
+        },
+        {
           path: '/feat/clickOutside',
           name: 'clickOutside',
           component: () => import('@/views/clickOutside/index.vue'),

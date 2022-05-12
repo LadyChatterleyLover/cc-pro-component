@@ -16,6 +16,7 @@ import ResizeBox from './resizeBox'
 import checkCard from './checkCard'
 import Card from './card'
 import List from './list'
+import Skeleton from './skeleton'
 
 const components = [
   Icon,
@@ -34,7 +35,8 @@ const components = [
   ResizeBox,
   checkCard,
   Card,
-  List
+  List,
+  Skeleton
 ]
 
 export default {

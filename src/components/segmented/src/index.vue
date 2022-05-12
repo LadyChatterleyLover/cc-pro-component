@@ -5,15 +5,15 @@
       class="cc-segmented-item"
       :class="{
         'cc-segmented-item-selected': currentIndex === index,
-        'cc-segmented-disabled': (isObject(item) && item.disabled) || disabled,
+        'cc-segmented-disabled': (isObject(item) && (item as OptionsItem).disabled) || disabled,
       }"
       :style="heightStyle"
       v-for="(item, index) in options"
       :key="index"
       @click="clickItem(item, index)"
     >
-      <slot v-if="item.slot" :name="item.slot" :item="item" :index="index"></slot>
-      <div v-else>{{ isObject(item) ? item.label : item }}</div>
+      <slot v-if="(item as OptionsItem).slot" :name="(item as OptionsItem).slot" :item="item" :index="index"></slot>
+      <div v-else>{{ isObject(item) ? (item as OptionsItem).label : item }}</div>
     </div>
     <div
       class="cc-segmented-mask"
