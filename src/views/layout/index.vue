@@ -7,6 +7,7 @@
       <el-header>
         <nav-header v-model:collapse="isCollapse"></nav-header>
       </el-header>
+       <nav-list></nav-list>
       <el-main>
         <router-view></router-view>
       </el-main>
@@ -18,6 +19,7 @@
 import { ref } from 'vue'
 import NavHeader from '@/components/layout/navHeader/index.vue'
 import NavSide from '@/components/layout/navSide/index.vue'
+import NavList from '@/components/layout/navList/index.vue'
 
 const isCollapse = ref(false)
 </script>

@@ -1,5 +1,5 @@
 export interface MenuItem {
-  icon: string
+  icon?: string
   name: string
   index: string
   children?: MenuItem[]
@@ -7,9 +7,19 @@ export interface MenuItem {
 
 export const menuData: MenuItem[] = [
   {
+    name: 'Dashboard',
     icon: 'HomeFilled',
-    name: '首页',
-    index: '/',
+    index: '/dashboard',
+    children: [
+      {
+        name: '分析页',
+        index: '/dashboard/analysis'
+      },
+      {
+        name: '工作台',
+        index: '/dashboard/workplace'
+      }
+    ]
   },
   {
     icon: 'Document',
@@ -17,67 +27,62 @@ export const menuData: MenuItem[] = [
     index: '/component',
     children: [
       {
-        icon: 'Check',
         name: '图标选择器',
         index: '/component/chooseIcon',
       },
       {
-        icon: 'Location',
         name: '省市区选择',
         index: '/component/chooseArea',
       },
       {
-        icon: 'Menu',
+        name: '趋势标记',
+        index: '/components/trend'
+      },
+      {
+        name: '时间选择',
+        index: '/components/chooseTime'
+      },
+      {
         name: '导航菜单',
         index: '/component/menu',
       },
       {
-        icon: 'User',
         name: '头像组合',
         index: '/component/avatar',
       },
       {
-        icon: 'Operation',
         name: '评论',
         index: '/component/comment',
       },
       {
-        icon: 'Clock',
         name: '倒计时',
         index: '/component/countdown',
       },
       {
-        icon: 'Clock',
         name: '数据列表',
         index: '/component/dataList',
       },
       {
-        icon: 'Loading',
         name: '旋转验证码',
         index: '/component/rotateVerify',
       },
       {
-        icon: 'Open',
         name: '滑动验证码',
         index: '/component/slideVerify',
       },
       {
-        icon: 'Minus',
         name: '分割面板',
         index: '/component/split',
       },
       {
-        icon: 'Position',
         name: '数字统计',
         index: '/component/statistic',
       },
       {
-        icon: 'ArrowRight',
         name: '分段器',
         index: '/component/segmented',
       },
       {
-        icon: 'Document',
         name: '文本',
         index: '/component/text',
       },
@@ -96,32 +101,26 @@ export const menuData: MenuItem[] = [
       {
         name: 'clickOutside',
         index: '/feat/clickOutside',
-        icon: 'Pointer',
       },
       {
         name: 'countup',
         index: '/feat/countup',
-        icon: 'Plus',
       },
       {
         name: 'ripple',
         index: '/feat/ripple',
-        icon: 'DArrowRight',
       },
       {
         name: 'hooks表格',
         index: '/feat/hooksTable',
-        icon: 'DocumentCopy',
       },
       {
         name: '水印',
         index: '/feat/watermark',
-        icon: 'Film',
       },
       {
         name: '全屏',
         index: '/feat/fullScreen',
-        icon: 'FullScreen',
       },
     ],
   },
@@ -131,27 +130,22 @@ export const menuData: MenuItem[] = [
     index: '/proComponent',
     children: [
       {
-        icon: 'Tickets',
         name: '高级卡片',
         index: '/proComponent/card',
       },
       {
-        icon: 'Tickets',
         name: '选项卡',
         index: '/proComponent/statisticCard',
       },
       {
-        icon: 'Check',
         name: '多选卡片',
         index: '/proComponent/checkCard',
       },
       {
-        icon: 'Connection',
         name: '高级列表',
         index: '/proComponent/list',
       },
       {
-        icon: 'More',
         name: '骨架屏',
         index: '/proComponent/skeleton',
       },

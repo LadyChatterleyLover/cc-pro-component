@@ -1,26 +1,49 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Layout from '../views/Layout/index.vue'
-import HomeView from '../views/HomeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
+      redirect: '/dashboard/analysis'
+    },
+    {
+      path: '/',
       component: Layout,
       children: [
         {
-          path: '/',
-          name: 'home',
-          component: HomeView,
+          path: '/dashboard/analysis',
+          component: () => import('../views/dashboard/analysis/index.vue'),
           meta: {
-            title: '首页',
-          },
+            title: '分析页'
+          }
+        },
+        {
+          path: '/dashboard/workplace',
+          component: () => import('../views/dashboard/workplace/index.vue'),
+          meta: {
+            title: '工作台'
+          }
+        },
+        {
+          path: '/components/trend',
+          component: () => import('../views/components/trend/index.vue'),
+          meta: {
+            title: '趋势标记'
+          }
+        },
+        {
+          path: '/components/chooseTime',
+          component: () => import('../views/components/chooseTime/index.vue'),
+          meta: {
+            title: '时间选择器'
+          }
         },
         {
           path: '/component/chooseIcon',
           name: 'chooseIcon',
-          component: () => import('@/views/chooseIcon/index.vue'),
+          component: () => import('@/views/components/chooseIcon/index.vue'),
           meta: {
             title: '图标选择器',
           },
@@ -28,7 +51,7 @@ const router = createRouter({
         {
           path: '/component/chooseArea',
           name: 'chooseArea',
-          component: () => import('@/views/chooseArea/index.vue'),
+          component: () => import('@/views/components/chooseArea/index.vue'),
           meta: {
             title: '省市区选择器',
           },
@@ -36,7 +59,7 @@ const router = createRouter({
         {
           path: '/component/menu',
           name: 'menu',
-          component: () => import('@/views/menu/index.vue'),
+          component: () => import('@/views/components/menu/index.vue'),
           meta: {
             title: '导航菜单',
           },
@@ -44,7 +67,7 @@ const router = createRouter({
         {
           path: '/component/avatar',
           name: 'avatar',
-          component: () => import('@/views/avatar/index.vue'),
+          component: () => import('@/views/components/avatar/index.vue'),
           meta: {
             title: '头像组合',
           },
@@ -52,7 +75,7 @@ const router = createRouter({
         {
           path: '/component/comment',
           name: 'comment',
-          component: () => import('@/views/comment/index.vue'),
+          component: () => import('@/views/components/comment/index.vue'),
           meta: {
             title: '评论',
           },
@@ -60,7 +83,7 @@ const router = createRouter({
         {
           path: '/component/countdown',
           name: 'countdown',
-          component: () => import('@/views/countdown/index.vue'),
+          component: () => import('@/views/components/countdown/index.vue'),
           meta: {
             title: '倒计时',
           },
@@ -68,7 +91,7 @@ const router = createRouter({
         {
           path: '/component/dataList',
           name: 'dataList',
-          component: () => import('@/views/dataList/index.vue'),
+          component: () => import('@/views/components/dataList/index.vue'),
           meta: {
             title: '倒计时',
           },
@@ -76,7 +99,7 @@ const router = createRouter({
         {
           path: '/component/rotateVerify',
           name: 'rotateVerify',
-          component: () => import('@/views/rotateVerify/index.vue'),
+          component: () => import('@/views/components/rotateVerify/index.vue'),
           meta: {
             title: '旋转验证码',
           },
@@ -84,7 +107,7 @@ const router = createRouter({
         {
           path: '/component/slideVerify',
           name: 'slideVerify',
-          component: () => import('@/views/slideVerify/index.vue'),
+          component: () => import('@/views/components/slideVerify/index.vue'),
           meta: {
             title: '滑动验证码',
           },
@@ -92,7 +115,7 @@ const router = createRouter({
         {
           path: '/component/split',
           name: 'split',
-          component: () => import('@/views/split/index.vue'),
+          component: () => import('@/views/components/split/index.vue'),
           meta: {
             title: '分割面板',
           },
@@ -100,7 +123,7 @@ const router = createRouter({
         {
           path: '/component/statistic',
           name: 'statistic',
-          component: () => import('@/views/statistic/index.vue'),
+          component: () => import('@/views/components/statistic/index.vue'),
           meta: {
             title: '数字统计',
           },
@@ -108,7 +131,7 @@ const router = createRouter({
         {
           path: '/component/segmented',
           name: 'segmented',
-          component: () => import('@/views/segmented/index.vue'),
+          component: () => import('@/views/components/segmented/index.vue'),
           meta: {
             title: '分段器',
           },
@@ -116,7 +139,7 @@ const router = createRouter({
         {
           path: '/component/text',
           name: 'text',
-          component: () => import('@/views/text/index.vue'),
+          component: () => import('@/views/components/text/index.vue'),
           meta: {
             title: '文本',
           },
@@ -124,7 +147,7 @@ const router = createRouter({
         {
           path: '/component/resizeBox',
           name: 'resizeBox',
-          component: () => import('@/views/resizeBox/index.vue'),
+          component: () => import('@/views/component/resizeBox/index.vue'),
           meta: {
             title: '伸缩框',
           },
@@ -132,7 +155,7 @@ const router = createRouter({
         {
           path: '/proComponent/statisticCard',
           name: 'statisticCard',
-          component: () => import('@/views/statisticCard/index.vue'),
+          component: () => import('@/views/proComponent/statisticCard/index.vue'),
           meta: {
             title: '选项卡',
           },
@@ -140,7 +163,7 @@ const router = createRouter({
         {
           path: '/proComponent/card',
           name: 'card',
-          component: () => import('@/views/card/index.vue'),
+          component: () => import('@/views/proComponent/card/index.vue'),
           meta: {
             title: '高级卡片',
           },
@@ -148,7 +171,7 @@ const router = createRouter({
         {
           path: '/proComponent/checkCard',
           name: 'checkCard',
-          component: () => import('@/views/checkCard/index.vue'),
+          component: () => import('@/views/proComponent/checkCard/index.vue'),
           meta: {
             title: '多选卡片',
           },
@@ -156,7 +179,7 @@ const router = createRouter({
         {
           path: '/proComponent/list',
           name: 'list',
-          component: () => import('@/views/list/index.vue'),
+          component: () => import('@/views/proComponent/list/index.vue'),
           meta: {
             title: '高级列表',
           },
@@ -164,7 +187,7 @@ const router = createRouter({
         {
           path: '/proComponent/skeleton',
           name: 'skeleton',
-          component: () => import('@/views/skeleton/index.vue'),
+          component: () => import('@/views/proComponent/skeleton/index.vue'),
           meta: {
             title: '骨架屏',
           },
@@ -172,7 +195,7 @@ const router = createRouter({
         {
           path: '/feat/clickOutside',
           name: 'clickOutside',
-          component: () => import('@/views/clickOutside/index.vue'),
+          component: () => import('@/views/feat/clickOutside/index.vue'),
           meta: {
             title: 'clickOutside',
           },
@@ -180,7 +203,7 @@ const router = createRouter({
         {
           path: '/feat/countup',
           name: 'countup',
-          component: () => import('@/views/countup/index.vue'),
+          component: () => import('@/views/feat/countup/index.vue'),
           meta: {
             title: '数字自增长',
           },
@@ -188,7 +211,7 @@ const router = createRouter({
         {
           path: '/feat/ripple',
           name: 'ripple',
-          component: () => import('@/views/ripple/index.vue'),
+          component: () => import('@/views/feat/ripple/index.vue'),
           meta: {
             title: '水波纹',
           },
@@ -196,7 +219,7 @@ const router = createRouter({
         {
           path: '/feat/hooksTable',
           name: 'hooksTable',
-          component: () => import('@/views/table/tableView.vue'),
+          component: () => import('@/views/feat/table/tableView.vue'),
           meta: {
             title: 'hooks表格',
           },
@@ -204,7 +227,7 @@ const router = createRouter({
         {
           path: '/feat/watermark',
           name: 'watermark',
-          component: () => import('@/views/watermark/index.vue'),
+          component: () => import('@/views/feat/watermark/index.vue'),
           meta: {
             title: '水印',
           },
@@ -212,7 +235,7 @@ const router = createRouter({
         {
           path: '/feat/fullScreen',
           name: 'fullScreen',
-          component: () => import('@/views/fullScreen/index.vue'),
+          component: () => import('@/views/feat/fullScreen/index.vue'),
           meta: {
             title: '全屏',
           },
@@ -223,7 +246,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, _, next) => {
-  document.title = to.meta.title as string
+  document.title = to.meta.title as string + ' - Cc Admin'
   next()
 })
 

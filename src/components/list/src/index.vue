@@ -291,7 +291,7 @@ watch(() => props.paginationOptions, val => {
   paginationOpts.value = val
 }, {immediate: true})
 
-watch(() => paginationOpts.value, val => {
+watch(() => paginationOpts.value, val => {``
   emits('update:paginationOptions', val)
 })
 </script>

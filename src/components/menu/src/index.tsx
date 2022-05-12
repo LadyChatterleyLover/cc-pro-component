@@ -54,7 +54,7 @@ export default defineComponent({
           title: () => {
             return (
               <>
-                <item.i />
+                {item.i ? <item.i /> : null}
                 <span>{item[props.name]}</span>
               </>
             )
@@ -71,7 +71,7 @@ export default defineComponent({
         // 正常渲染普通的菜单
         return (
           <el-menu-item index={item[props.index]}>
-            <item.i />
+             {item.i ? <item.i /> : null}
             <span>{item[props.name]}</span>
           </el-menu-item>
         )

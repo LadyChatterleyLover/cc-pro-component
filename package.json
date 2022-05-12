@@ -11,6 +11,7 @@
     "countup.js": "^2.1.0",
     "element-plus": "^2.1.11",
     "lodash": "^4.17.21",
+    "pinia": "^2.0.14",
     "screenfull": "^6.0.1",
     "vue": "^3.2.33",
     "vue-router": "^4.0.14"
