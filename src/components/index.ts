@@ -1,5 +1,6 @@
 import type { App } from 'vue'
 import Icon from './choosIcon'
+import Time from './chooseTime'
 import Area from './chooseArea'
 import Menu from './menu'
 import AvatarGroup from './avatarGroup'
@@ -18,9 +19,11 @@ import Card from './card'
 import List from './list'
 import Skeleton from './skeleton'
 import StatisticCard from './statisticCard'
+import Trend from './trend'
 
 const components = [
   Icon,
+  Time,
   Area,
   Menu,
   AvatarGroup,
@@ -39,6 +42,7 @@ const components = [
   List,
   Skeleton,
   StatisticCard,
+  Trend
 ]
 
 export default {

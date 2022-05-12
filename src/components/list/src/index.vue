@@ -319,7 +319,6 @@ onMounted(() => {
   intersectionObserver.value.observe(loadingRef.value!)
 })
 onUnmounted(() => {
-  intersectionObserver.value!.unobserve(loadingRef.value!)
   intersectionObserver.value!.disconnect()
   intersectionObserver.value = null
 })
