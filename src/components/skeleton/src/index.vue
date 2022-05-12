@@ -126,13 +126,46 @@
                 <div><el-skeleton-item variant="h1" style="width: 100px; margin-bottom: 16px"></el-skeleton-item></div>
                 <div class="cc-skeleton-descriptions-content" v-for="item in 3" :key="item">
                   <div class="cc-skeleton-descriptions-content-item" v-for="item1 in 3" :key="item1">
-                   <el-skeleton-item style="height: 16px;margin-top: 8px;"></el-skeleton-item>
+                    <el-skeleton-item style="height: 16px; margin-top: 8px"></el-skeleton-item>
                   </div>
                 </div>
               </template>
             </el-skeleton>
           </div>
           <el-divider></el-divider>
+          <div>
+            <el-skeleton animated>
+              <template #template>
+                <el-skeleton-item variant="h1" style="width: 100px; margin-bottom: 16px"></el-skeleton-item>
+              </template>
+            </el-skeleton>
+          </div>
+          <div class="cc-skeleton-descriptions-bg">
+            <div class="cc-skeleton-descriptions-bg-item" v-for="item in 5" :key="item">
+              <el-skeleton animated>
+                <template #template>
+                  <el-skeleton-item style="width: 75px; margin: 0px; height: 24px"></el-skeleton-item>
+                </template>
+              </el-skeleton>
+            </div>
+          </div>
+          <div class="cc-skeleton-descriptions-desc" v-for="item in 4" :key="item">
+            <div class="cc-skeleton-descriptions-desc-item" v-for="item1 in 4" :key="item1">
+              <el-skeleton animated>
+                <template #template>
+                  <el-skeleton-item style="width: 100%; margin: 0px; height: 24px"></el-skeleton-item>
+                </template>
+              </el-skeleton>
+              <el-divider></el-divider>
+            </div>
+          </div>
+          <div style="display: flex; justify-content: flex-end; padding-top: 16px">
+            <el-skeleton animated>
+              <template #template>
+                <el-skeleton-item style="margin: 0px; height: 32px; float: right; max-width: 630px"></el-skeleton-item>
+              </template>
+            </el-skeleton>
+          </div>
         </el-card>
       </div>
     </template>
@@ -140,13 +173,13 @@
 </template>
 
 <script lang="ts" setup>
-const props = withDefaults(
+withDefaults(
   defineProps<{
-    type?: "list" | "result" | "descriptions"
+    type?: 'list' | 'result' | 'descriptions'
     active?: boolean
   }>(),
   {
-    type: "list",
+    type: 'list',
     active: true,
   }
 )
@@ -201,6 +234,35 @@ const props = withDefaults(
           padding-left: 0;
         }
         &:last-child {
+          padding-right: 0;
+        }
+      }
+    }
+    &-bg {
+      display: flex;
+      background: rgba(0, 0, 0, 0.02);
+      padding: 24px 8px;
+      &-item {
+        flex: 1;
+        padding: 0 24px;
+        &:first-child {
+          padding-left: 0;
+        }
+        &:last-child {
+          flex: 3;
+          padding-right: 0;
+        }
+      }
+    }
+    &-desc {
+      display: flex;
+      background: none;
+      padding: 24px 8px;
+      &-item {
+        flex: 1;
+        padding: 0 32px 0 20px;
+        &:last-child {
+          flex: 3;
           padding-right: 0;
         }
       }
