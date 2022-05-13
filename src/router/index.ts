@@ -6,7 +6,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      redirect: '/dashboard/analysis'
+      redirect: '/dashboard/analysis',
     },
     {
       path: '/',
@@ -16,29 +16,29 @@ const router = createRouter({
           path: '/dashboard/analysis',
           component: () => import('../views/dashboard/analysis/index.vue'),
           meta: {
-            title: '分析页'
-          }
+            title: '分析页',
+          },
         },
         {
           path: '/dashboard/workplace',
           component: () => import('../views/dashboard/workplace/index.vue'),
           meta: {
-            title: '工作台'
-          }
+            title: '工作台',
+          },
         },
         {
           path: '/components/trend',
           component: () => import('../views/components/trend/index.vue'),
           meta: {
-            title: '趋势标记'
-          }
+            title: '趋势标记',
+          },
         },
         {
           path: '/components/chooseTime',
           component: () => import('../views/components/chooseTime/index.vue'),
           meta: {
-            title: '时间选择器'
-          }
+            title: '时间选择器',
+          },
         },
         {
           path: '/component/chooseIcon',
@@ -144,14 +144,14 @@ const router = createRouter({
             title: '文本',
           },
         },
-        {
-          path: '/component/resizeBox',
-          name: 'resizeBox',
-          component: () => import('@/views/component/resizeBox/index.vue'),
-          meta: {
-            title: '伸缩框',
-          },
-        },
+        // {
+        //   path: '/component/resizeBox',
+        //   name: 'resizeBox',
+        //   component: () => import('@/views/component/resizeBox/index.vue'),
+        //   meta: {
+        //     title: '伸缩框',
+        //   },
+        // },
         {
           path: '/proComponent/statisticCard',
           name: 'statisticCard',
@@ -246,7 +246,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, _, next) => {
-  document.title = to.meta.title as string + ' - Cc Admin'
+  document.title = (to.meta.title as string) + ' - Cc Admin'
   next()
 })
 
