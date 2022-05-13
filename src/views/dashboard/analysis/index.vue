@@ -9,13 +9,8 @@
           :tagType="item.tagType"
           :descTitle="item.descTitle"
           :desc="item.desc"
+          :avatar="item.avatar"
         >
-          <template #image>
-            <img
-              style="width: 36px; height: 36px; border-radius: 50%"
-              src="https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png"
-            />
-          </template>
         </card>
       </el-col>
     </el-row>
@@ -33,6 +28,7 @@ const list: any = [
     value: '$2,000',
     descTitle: '总访问数',
     desc: '$120,000',
+    avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
   },
   {
     title: '访问数',
@@ -41,6 +37,7 @@ const list: any = [
     value: '$2,000',
     descTitle: '总访问数',
     desc: '$120,000',
+    avatar: 'https://gw.alipayobjects.com/zos/rmsportal/dURIMkkrRFpPgTuzkwnB.png'
   },
   {
     title: '访问数',
@@ -49,6 +46,7 @@ const list: any = [
     value: '$2,000',
     descTitle: '总访问数',
     desc: '$120,000',
+    avatar: 'https://gw.alipayobjects.com/zos/rmsportal/sfjbOqnsXXJgNCjCzDBL.png'
   },
   {
     title: '访问数',
@@ -57,6 +55,7 @@ const list: any = [
     value: '$2,000',
     descTitle: '总访问数',
     desc: '$120,000',
+    avatar: 'https://gw.alipayobjects.com/zos/rmsportal/kZzEzemZyKLKFsojXItE.png'
   },
 ]
 </script>
