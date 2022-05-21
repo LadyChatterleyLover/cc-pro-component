@@ -55,7 +55,7 @@
     <cc-check-card-group v-model="checks" multiple>
       <cc-check-card title="Card A" description="选项一" value="A"></cc-check-card>
       <cc-check-card title="Card B" description="选项二" value="B"></cc-check-card>
-      <cc-check-card title="Card C" value="C" description="选项三，这是一个不可选项"></cc-check-card>
+      <cc-check-card title="Card C" value="C" disabled description="选项三，这是一个不可选项"></cc-check-card>
     </cc-check-card-group>
     <br />
     <br />
