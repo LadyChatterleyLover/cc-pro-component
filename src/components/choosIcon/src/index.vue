@@ -7,7 +7,7 @@
       <div class="container">
         <div class="item" v-for="(item, index) in Object.keys(ElIcons)" :key="index" @click="clickItem(item)">
           <div class="text">
-            <component :is="`el-icon-${transformIconName(item)}`"></component>
+            <component :is="`ElIcon${item}`"></component>
           </div>
           <div class="icon">{{ item }}</div>
         </div>
@@ -19,7 +19,6 @@
 <script lang="ts" setup>
 import * as ElIcons from "@element-plus/icons-vue"
 import { watch, ref } from "vue"
-import { transformIconName } from "@/utils/transformIconName"
 import { useCopy } from "@/hooks/useCopy"
 import { ElMessage } from "element-plus"
 
@@ -39,7 +38,7 @@ const handleClick = () => {
 }
 // 点击图标
 const clickItem = (item: string) => {
-  const text = `<el-icon-${transformIconName(item)} />`
+  const text = `<ElIcon${item} />`
   // 复制文本
   const { copy } = useCopy(text, () => ElMessage.success(`${text}复制成功`))
   copy()

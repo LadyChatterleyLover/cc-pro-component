@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <el-card>
     <cc-choose-icon title="选择图标" v-model="visible">选择图标</cc-choose-icon>
-  </div>
+  </el-card>
 </template>
 
 <script lang='ts' setup>

@@ -33,7 +33,7 @@
       </template>
       <div class="cc-slide-verify-drag-check" v-else>
         <component
-          :is="`el-icon-${transformIconName(successIcon)}`"
+          :is="`ElIcon${successIcon}`"
           :style="{
             color: activeIconColor,
             size: iconSize + 'px',
@@ -47,7 +47,6 @@
 
 <script lang="ts" setup>
 import { ref, withDefaults } from "vue"
-import { transformIconName } from "@/utils/transformIconName"
 
 const props = withDefaults(
   defineProps<{
