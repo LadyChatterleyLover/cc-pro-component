@@ -12,7 +12,7 @@
       ]"
       v-for="(item, index) in list"
       :key="index"
-      @click="handleClick(item, index)"
+      @click="handleClick(item)"
     >
       <el-skeleton animated v-if="loading">
         <template #template>
@@ -80,7 +80,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, useSlots, watch } from 'vue'
+import { nextTick, ref, useSlots, watch } from "vue"
 
 export interface CcCheckCardGroupOptions {
   title: string
@@ -95,25 +95,24 @@ const props = withDefaults(
     bordered?: boolean
     loading?: boolean
     modelValue?: string | string[]
-    size?: 'default' | 'small' | 'large'
+    size?: "default" | "small" | "large"
     options?: CcCheckCardGroupOptions[]
   }>(),
   {
     multiple: false,
     bordered: true,
     loading: false,
-    size: 'default',
-    modelValue: '',
+    size: "default",
+    modelValue: "",
   }
 )
 const slots = useSlots()?.default?.()
 const list = ref<any[]>([])
 
-const handleClick = (item: any, index: number) => {
+const handleClick = (item: any) => {
   if (item.disabled) {
     return
   }
-  item.clickCount++
   if (props.multiple && !item.disabled) {
     item.checked = !item.checked
   } else {
@@ -131,12 +130,14 @@ watch(
   () => props.modelValue,
   (val) => {
     let arr: string[] = []
-    if (typeof val !== 'object') arr.push(val)
+    if (typeof val !== "object") arr.push(val)
     else arr = [...(val as string[])]
-    list.value.map((item) => {
-      if (arr.includes(item.value)) {
-        item.checked = true
-      }
+    nextTick(() => {
+      list.value.map((item) => {
+        if (arr.includes(item.value)) {
+          item.checked = true
+        }
+      })
     })
   },
   { immediate: true }
@@ -152,7 +153,7 @@ watch(
         list.value.push(item.props)
       })!
       list.value.map((item: any) => {
-        if (item.disabled === '') item.disabled = true
+        if (item.disabled === "") item.disabled = true
         item.checked = false
       })
     }

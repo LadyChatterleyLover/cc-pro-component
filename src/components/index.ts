@@ -20,6 +20,7 @@ import List from './list'
 import Skeleton from './skeleton'
 import StatisticCard from './statisticCard'
 import Trend from './trend'
+import Grid from './grid'
 
 const components = [
   Icon,
@@ -42,7 +43,8 @@ const components = [
   List,
   Skeleton,
   StatisticCard,
-  Trend
+  Trend,
+  Grid
 ]
 
 export default {

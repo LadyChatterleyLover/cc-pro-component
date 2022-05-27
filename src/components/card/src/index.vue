@@ -95,13 +95,13 @@
         <div class="cc-card-action" v-if="actions && actions.length">
           <div
             class="cc-card-action-item"
-            :class="{ 'cc-card-action-item-border': i !== actions.length }"
+            :class="{ 'cc-card-action-item-border': i !== actions!.length }"
             v-for="(action, i) in actions"
             :key="i"
             @click="clickAction(action, i)"
           >
             <div class="cc-card-action-item-icon" v-if="action.icon">
-              <component :is="`el-icon-${transformIconName(action.icon)}`"></component>
+              <component :is="`ElIcon${action.icon}`"></component>
             </div>
             <div class="cc-card-action-item-name" v-if="action.name">{{ action.name }}</div>
           </div>
@@ -120,7 +120,6 @@ export default {
 <script setup lang="ts">
 import { computed, useSlots, getCurrentInstance } from 'vue'
 import type { CSSProperties } from 'vue'
-import { transformIconName } from '@/utils/transformIconName'
 
 export interface ActionItem {
   icon?: string

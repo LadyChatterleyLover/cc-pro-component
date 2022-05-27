@@ -6,12 +6,12 @@
     </div>
     <div class="icon">
       <component
-        :is="`el-icon-${transformIconName(upIcon)}`"
+        :is="`ElIcon${upIcon}`"
         :style="{ color: !reverseColor ? upIconColor : '#52c41a' }"
         v-if="type === 'up'"
       ></component>
       <component
-        :is="`el-icon-${transformIconName(downIcon)}`"
+        :is="`ElIcon${downIcon}`"
         :style="{ color: !reverseColor ? downIconColor : '#f5222d' }"
         v-else
       ></component>
@@ -21,7 +21,6 @@
 
 <script lang='ts' setup>
 import { useSlots, computed } from 'vue'
-import { transformIconName } from '@/utils/transformIconName'
 let props = defineProps({
   // 标记当前趋势是上升(up)还是下降(down)
   type: {
