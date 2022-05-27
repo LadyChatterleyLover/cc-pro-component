@@ -88,6 +88,10 @@ const handleCommand = (command: string, item: MenuItem) => {
       })
       store.setNav(arr)
       localStorage.setItem('cc-admin-navList', JSON.stringify(arr))
+      if (!arr.find((i: MenuItem) => i.index.includes(route.path))) {
+        let index = arr.findIndex((i) => i.index === item.index)
+        router.push(arr[index].index)
+      }
     }
   }
 }
