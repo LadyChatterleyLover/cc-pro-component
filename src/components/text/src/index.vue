@@ -9,46 +9,46 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, onMounted, watch } from "vue"
-import { dayjs } from "element-plus"
+import { ref, onMounted, watch } from 'vue'
+import { dayjs } from 'element-plus'
 
 const props = withDefaults(
   defineProps<{
     text?: string | number
-    type?: "primary" | "success" | "warning" | "danger" | "info"
-    mode?: "phone" | "date" | "name" | "price"
+    type?: 'primary' | 'success' | 'warning' | 'danger' | 'info'
+    mode?: 'phone' | 'date' | 'name' | 'price'
     dateFormat?: string
     prefix?: string | number
     suffix?: string | number
     lines?: number
   }>(),
   {
-    text: "",
-    dateFormat: "YYYY-MM-DD",
-    prefix: "",
-    suffix: "",
+    text: '',
+    dateFormat: 'YYYY-MM-DD',
+    prefix: '',
+    suffix: '',
   }
 )
 
-const emits = defineEmits(["click"])
+const emits = defineEmits(['click'])
 
 const value = ref<string>()
 
 const handleClick = (e: MouseEvent) => {
-  if (props.mode === "phone") {
-    window.location.href = "tel:" + props.text
+  if (props.mode === 'phone') {
+    window.location.href = 'tel:' + props.text
   }
-  emits("click", e)
+  emits('click', e)
 }
 // 默认的姓名脱敏规则
 const formatName = (name: string) => {
-  let value = ""
+  let value = ''
   if (name.length === 2) {
-    value = name.slice(0, 1) + "*"
+    value = name.slice(0, 1) + '*'
   } else if (name.length > 2) {
-    let char = ""
+    let char = ''
     for (let i = 0, len = name.length - 2; i < len; i++) {
-      char += "*"
+      char += '*'
     }
     value = name.slice(0, 1) + char + name.slice(-1, 1)
   } else {
@@ -58,17 +58,17 @@ const formatName = (name: string) => {
 }
 
 onMounted(() => {
-  if (props.mode === "date") {
+  if (props.mode === 'date') {
     value.value = dayjs(props.text).format(props.dateFormat)
   }
-  if (props.mode === "name") {
+  if (props.mode === 'name') {
     value.value = formatName(value.value as string)
   }
-  if (props.mode === "price") {
+  if (props.mode === 'price') {
     const reg = /\d{1,3}(?=(\d{3})+$)/g
-    const int = value.value!.split(".")[0]
-    const decimal = value.value!.split(".")[1]
-    value.value = String(int).replace(reg, "$&,") + "." + decimal
+    const int = value.value!.split('.')[0]
+    const decimal = value.value!.split('.')[1]
+    value.value = String(int).replace(reg, '$&,') + '.' + decimal
   }
 })
 watch(
@@ -91,19 +91,19 @@ watch(
   -webkit-line-clamp: v-bind('props.lines');
   -webkit-box-orient: vertical;
   &-primary {
-    color: #409eff;
+    color: var(--el-color-primary);
   }
   &-success {
-    color: #67c23a;
+    color: var(--el-color-success);
   }
   &-warning {
-    color: #e6a23c;
+    color: var(--el-color-warning);
   }
   &-danger {
-    color: #f56c6c;
+    color: var(--el-color-danger);
   }
   &-info {
-    color: #909399;
+    color: var(--el-color-info);
   }
 }
 </style>
