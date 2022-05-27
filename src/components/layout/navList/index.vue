@@ -1,16 +1,5 @@
 <template>
   <div class="cc-nav-container">
-    <!-- <div
-        class="cc-nav-container-item"
-        :class="{ 'cc-nav-container-item-active': $route.path === item.index }"
-        @click="router.push(item.index)"
-      >
-        <div v-if="$route.path === item.index" class="cc-nav-container-item-circle"></div>
-        <div>{{ item.name }}</div>
-        <div @click.stop="close(item)">
-          <el-icon-close></el-icon-close>
-        </div>
-      </div> -->
     <el-tabs type="card" editable v-model="$route.path" @tab-remove="close" @tab-click="clickItem">
       <el-tab-pane v-for="(item, index) in navList" :key="item.index" :name="item.index">
         <template #label>
@@ -136,34 +125,6 @@ const close = (name: string) => {
 .cc-nav-container {
   border-bottom: 1px solid #d8dce5;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 12%), 0 0 3px 0 rgb(0 0 0 / 4%);
-
-  &-item {
-    border: 1px solid #d8dce5;
-    color: #495060;
-    background: #fff;
-    padding: 0 8px;
-    height: 26px;
-    display: flex;
-    align-items: center;
-    margin: 0 5px;
-    font-size: 12px;
-    cursor: pointer;
-
-    &-circle {
-      width: 8px;
-      height: 8px;
-      border-radius: 100%;
-      background: #fff;
-      position: relative;
-      top: -1px;
-      margin-right: 4px;
-    }
-
-    &-active {
-      background: #1890ff;
-      color: #fff;
-    }
-  }
   .label {
     height: 42px;
     display: flex;
@@ -171,7 +132,7 @@ const close = (name: string) => {
   }
 }
 .active {
-  color: #409eff !important;
+  color: var(--el-color-primary);
 }
 
 svg {

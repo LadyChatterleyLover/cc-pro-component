@@ -13,6 +13,7 @@
       </el-main>
     </el-container>
   </el-container>
+  <setting></setting>
 </template>
 
 <script lang="ts" setup>
@@ -23,6 +24,7 @@ import { find } from '@/utils'
 import NavHeader from '@/components/layout/navHeader/index.vue'
 import NavSide from '@/components/layout/navSide/index.vue'
 import NavList from '@/components/layout/navList/index.vue'
+import Setting from '@/components/layout/setting/index.vue'
 import type { MenuItem } from '@/components/menu/src/types'
 import { menuData } from '@/components/layout/navSide/config'
 
