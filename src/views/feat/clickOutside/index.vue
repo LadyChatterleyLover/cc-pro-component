@@ -1,8 +1,10 @@
 <template>
-  <div>
-    <button ref="box">box</button>
-    <p>{{ count }}</p>
-  </div>
+  <el-card>
+    <div>
+      <button ref="box">box</button>
+      <p>{{ count }}</p>
+    </div>
+  </el-card>
 </template>
 
 <script setup lang="ts">

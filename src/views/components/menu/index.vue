@@ -1,7 +1,9 @@
 <template>
-  <div style="width: 500px">
-    <cc-menu style="width: 350px" :data="data" defaultActive="2" name="a" index="b" icon="c" children="d"></cc-menu>
-  </div>
+  <el-card>
+    <div style="width: 500px">
+      <cc-menu style="width: 350px" :data="data" defaultActive="2" name="a" index="b" icon="c" children="d"></cc-menu>
+    </div>
+  </el-card>
 </template>
 
 <script lang="ts" setup>

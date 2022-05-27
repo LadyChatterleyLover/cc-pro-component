@@ -1,20 +1,22 @@
 <template>
-  <el-table :data="tableProps.dataSource" v-loading="tableProps.loading" style="width: 100%">
-    <el-table-column prop="key" label="key" />
-    <el-table-column prop="name" label="name" />
-    <el-table-column prop="owner" label="owner" />
-  </el-table>
+  <el-card>
+    <el-table :data="tableProps.dataSource" v-loading="tableProps.loading" style="width: 100%">
+      <el-table-column prop="key" label="key" />
+      <el-table-column prop="name" label="name" />
+      <el-table-column prop="owner" label="owner" />
+    </el-table>
 
-  <el-pagination
-    v-if="!tableProps.loading"
-    v-model:currentPage="tableProps.pagination.current"
-    v-model:page-size="tableProps.pagination.pageSize"
-    :page-sizes="[10, 20, 30, 40]"
-    layout="total, sizes, prev, pager, next, jumper"
-    :total="tableProps.pagination.total"
-    @size-change="sizeChange"
-    @current-change="currentChange"
-  />
+    <el-pagination
+      v-if="!tableProps.loading"
+      v-model:currentPage="tableProps.pagination.current"
+      v-model:page-size="tableProps.pagination.pageSize"
+      :page-sizes="[10, 20, 30, 40]"
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="tableProps.pagination.total"
+      @size-change="sizeChange"
+      @current-change="currentChange"
+    />
+  </el-card>
 </template>
 
 <script setup lang="ts">

@@ -25,10 +25,10 @@
     >
       <template v-if="status === 'none'">
         <div class="cc-rotate-verify-bar-wrap-arrow">
-          <el-icon-arrowright :style="{ color: iconColor }"></el-icon-arrowright>
+          <el-icon-arrow-right :style="{ color: iconColor }"></el-icon-arrow-right>
         </div>
         <div class="cc-rotate-verify-bar-wrap-arrow">
-          <el-icon-arrowright :style="{ color: iconColor }"></el-icon-arrowright>
+          <el-icon-arrow-right :style="{ color: iconColor }"></el-icon-arrow-right>
         </div>
       </template>
       <div class="cc-slide-verify-drag-check" v-else>
@@ -46,7 +46,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, withDefaults } from "vue"
+import { ref, withDefaults } from 'vue'
 
 const props = withDefaults(
   defineProps<{
@@ -71,30 +71,30 @@ const props = withDefaults(
     successIcon?: string
   }>(),
   {
-    tip: "拖动滑块验证",
+    tip: '拖动滑块验证',
     slideWidth: 300,
     slideHeight: 30,
-    bgColor: "#E9E9E9",
-    activeBgColor: "#19be6b",
-    iconColor: "#cbcbcb",
-    activeIconColor: "#19be6b",
+    bgColor: '#E9E9E9',
+    activeBgColor: '#19be6b',
+    iconColor: '#cbcbcb',
+    activeIconColor: '#19be6b',
     iconSize: 14,
     fontSize: 14,
-    successIcon: "CircleCheck",
+    successIcon: 'CircleCheck',
   }
 )
 
-const emits = defineEmits(["success"])
+const emits = defineEmits(['success'])
 
 const moving = ref<boolean>(false)
 const activeBarWidth = ref<number>(0)
 const startX = ref<number>(0)
-const transitionDuration = ref<string>("0.6s")
-const status = ref<string>("none")
+const transitionDuration = ref<string>('0.6s')
+const status = ref<string>('none')
 
 const handleMouseDown = (e: MouseEvent) => {
   startX.value = e.clientX
-  transitionDuration.value = "0s"
+  transitionDuration.value = '0s'
   moving.value = true
 }
 const handleMouseMove = (e: MouseEvent) => {
@@ -108,21 +108,21 @@ const handleMouseMove = (e: MouseEvent) => {
 }
 const handleMouseUp = () => {
   moving.value = false
-  transitionDuration.value = "0.6s"
+  transitionDuration.value = '0.6s'
   let dis = props.slideWidth - 40
   if (activeBarWidth.value < dis) {
     activeBarWidth.value = 0
   } else {
     activeBarWidth.value = dis
-    status.value = "done"
-    emits("success")
+    status.value = 'done'
+    emits('success')
   }
 }
 const reset = () => {
   moving.value = false
-  transitionDuration.value = "0.6s"
+  transitionDuration.value = '0.6s'
   activeBarWidth.value = 0
-  status.value = "none"
+  status.value = 'none'
 }
 defineExpose({
   reset,

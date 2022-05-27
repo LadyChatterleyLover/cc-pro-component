@@ -41,10 +41,10 @@
               <el-checkbox @change="changeSelect(item, index)" v-model="item.selected"></el-checkbox>
             </el-col>
             <el-col @click="handleExpand(item, index)" class="cc-list-content-item-expand" :span="1" v-if="expand">
-              <el-icon-arrowright
+              <el-icon-arrow-right
                 class="cc-list-content-item-expand-icon"
                 :class="{ 'cc-list-content-item-expand-rotate': item.expand }"
-              ></el-icon-arrowright>
+              ></el-icon-arrow-right>
             </el-col>
             <el-col class="cc-list-content-item-avatar" :span="$slots[`${item.avatarSlot}`] || item.avatar ? 1 : 0">
               <slot :name="item.avatarSlot" v-if="$slots[`${item.avatarSlot}`]"></slot>
@@ -117,8 +117,8 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, watch, onMounted, onUnmounted } from "vue"
-import cloneDeep from "lodash/cloneDeep"
+import { ref, watch, onMounted, onUnmounted } from 'vue'
+import cloneDeep from 'lodash/cloneDeep'
 
 export interface ListItem {
   name: string
@@ -142,8 +142,8 @@ export interface ListItem {
 const props = withDefaults(
   defineProps<{
     dataSource: ListItem[]
-    showActions?: "always" | "hover"
-    showExtra?: "always" | "hover"
+    showActions?: 'always' | 'hover'
+    showExtra?: 'always' | 'hover'
     headerTitle?: string
     tooltip?: string
     toolBar?: string
@@ -151,7 +151,7 @@ const props = withDefaults(
     expand?: boolean
     selected?: boolean
     split?: boolean
-    size?: "default" | "small" | "large"
+    size?: 'default' | 'small' | 'large'
     pagination?: boolean
     loadMore?: () => void
     paginationOptions?: {
@@ -163,29 +163,29 @@ const props = withDefaults(
     }
   }>(),
   {
-    showActions: "always",
+    showActions: 'always',
     editable: false,
     expand: false,
     selected: false,
     split: false,
-    size: "default",
+    size: 'default',
     pagination: false,
   }
 )
 const emits = defineEmits([
-  "click",
-  "dblclick",
-  "contextmenu",
-  "mouseenter",
-  "mouseleave",
-  "editSave",
-  "editDelete",
-  "editCancel",
-  "expand",
-  "select",
-  "current-change",
-  "size-change",
-  "update:paginationOptions",
+  'click',
+  'dblclick',
+  'contextmenu',
+  'mouseenter',
+  'mouseleave',
+  'editSave',
+  'editDelete',
+  'editCancel',
+  'expand',
+  'select',
+  'current-change',
+  'size-change',
+  'update:paginationOptions',
 ])
 
 const list = ref<ListItem[]>([])
@@ -196,23 +196,23 @@ const loadingRef = ref<HTMLElement>()
 const intersectionObserver = ref<IntersectionObserver | null>(null)
 
 const clickItem = (item: ListItem, index: number) => {
-  emits("click", { item, index })
+  emits('click', { item, index })
 }
 const dblclickItem = (item: ListItem, index: number) => {
-  emits("dblclick", { item, index })
+  emits('dblclick', { item, index })
 }
 const contextmenuItem = (item: ListItem, index: number) => {
-  emits("contextmenu", { item, index })
+  emits('contextmenu', { item, index })
 }
 const enter = (item: ListItem, index: number) => {
   item.showActions = true
-  emits("mouseenter", { item, index })
+  emits('mouseenter', { item, index })
 }
 const leave = (item: ListItem, index: number) => {
-  if (props.showActions === "hover") {
+  if (props.showActions === 'hover') {
     item.showActions = false
   }
-  emits("mouseleave", { item, index })
+  emits('mouseleave', { item, index })
 }
 const clickAction = (item: ListItem) => {
   if (props.editable) {
@@ -223,13 +223,13 @@ const clickAction = (item: ListItem) => {
 const save = (item: ListItem, index: number) => {
   item.editable = false
   currentEdit.value = currentEdit.value.filter((i) => i.id !== item.id)
-  emits("editSave", { item, index })
+  emits('editSave', { item, index })
 }
 const del = (item: ListItem, index: number) => {
   item.editable = false
   list.value.splice(index, 1)
   currentEdit.value = currentEdit.value.filter((i) => i.id !== item.id)
-  emits("editDelete", { item, index })
+  emits('editDelete', { item, index })
 }
 
 const cancel = (item: ListItem, index: number) => {
@@ -239,12 +239,12 @@ const cancel = (item: ListItem, index: number) => {
   item.subTitle = current!.subTitle
   currentEdit.value = currentEdit.value.filter((i) => i.id !== item.id)
   item.editable = false
-  emits("editCancel", { item, index })
+  emits('editCancel', { item, index })
 }
 
 const handleExpand = (item: ListItem, index: number) => {
   item.expand = !item.expand
-  emits("expand", { item, index })
+  emits('expand', { item, index })
 }
 
 const changeSelect = (item: ListItem, index: number) => {
@@ -253,7 +253,7 @@ const changeSelect = (item: ListItem, index: number) => {
   } else {
     selectList.value.splice(index, 1)
   }
-  emits("select", { item, index })
+  emits('select', { item, index })
 }
 
 const cancelSelect = () => {
@@ -265,11 +265,11 @@ const cancelSelect = () => {
 
 const currentChange = (val: number) => {
   paginationOpts.value.current = val
-  emits("current-change", val)
+  emits('current-change', val)
 }
 const sizeChange = (val: number) => {
   paginationOpts.value.pageSize = val
-  emits("size-change", val)
+  emits('size-change', val)
 }
 
 watch(
@@ -282,7 +282,7 @@ watch(
         item.editable = false
         item.expand = false
         item.selected = false
-        if (props.showActions === "always") {
+        if (props.showActions === 'always') {
           item.showActions = true
         } else {
           item.showActions = false
@@ -304,7 +304,7 @@ watch(
 watch(
   () => paginationOpts.value,
   (val) => {
-    emits("update:paginationOptions", val)
+    emits('update:paginationOptions', val)
   }
 )
 

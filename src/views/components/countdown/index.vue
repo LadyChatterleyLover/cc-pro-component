@@ -1,44 +1,46 @@
 <template>
-  <div class="demo">
-    <div class="demo-title">基础用法</div>
-    <div class="demo-item">
-      <cc-countdown :time="time" @change="handleChange" @end="handleEnd"></cc-countdown>
+  <el-card>
+    <div class="demo">
+      <div class="demo-title">基础用法</div>
+      <div class="demo-item">
+        <cc-countdown :time="time" @change="handleChange" @end="handleEnd"></cc-countdown>
+      </div>
     </div>
-  </div>
 
-  <div class="demo">
-    <div class="demo-title">分隔符为中文</div>
-    <div class="demo-item">
-      <cc-countdown separator="zh" :time="time"></cc-countdown>
+    <div class="demo">
+      <div class="demo-title">分隔符为中文</div>
+      <div class="demo-item">
+        <cc-countdown separator="zh" :time="time"></cc-countdown>
+      </div>
     </div>
-  </div>
 
-  <div class="demo">
-    <div class="demo-title">手动触发</div>
-    <div class="demo-item">
-      <cc-countdown separator="zh" :time="time" :start="start"></cc-countdown>
-      <el-button type="primary" size="small" @click="start = true">start</el-button>
+    <div class="demo">
+      <div class="demo-title">手动触发</div>
+      <div class="demo-item">
+        <cc-countdown separator="zh" :time="time" :start="start"></cc-countdown>
+        <el-button type="primary" size="small" @click="start = true">start</el-button>
+      </div>
     </div>
-  </div>
 
-  <div class="demo">
-    <div class="demo-title">自定义样式</div>
-    <div class="demo-item">
-      <cc-countdown :time="time">
-        <template #default="{ timeData }">
-          <span class="block">{{ timeData.hours }}</span>
-          <span class="colon">:</span>
-          <span class="block">{{ timeData.minutes }}</span>
-          <span class="colon">:</span>
-          <span class="block">{{ timeData.seconds }}</span>
-        </template>
-      </cc-countdown>
+    <div class="demo">
+      <div class="demo-title">自定义样式</div>
+      <div class="demo-item">
+        <cc-countdown :time="time">
+          <template #default="{ timeData }">
+            <span class="block">{{ timeData.hours }}</span>
+            <span class="colon">:</span>
+            <span class="block">{{ timeData.minutes }}</span>
+            <span class="colon">:</span>
+            <span class="block">{{ timeData.seconds }}</span>
+          </template>
+        </cc-countdown>
+      </div>
     </div>
-  </div>
+  </el-card>
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue"
+import { ref } from 'vue'
 
 let time = ref<number>(1000 * 60 * 60 * 3)
 let start = ref(false)

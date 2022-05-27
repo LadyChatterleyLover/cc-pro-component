@@ -1,5 +1,7 @@
 <template>
-  <cc-choose-area @change="changeArea"></cc-choose-area>
+  <el-card>
+    <cc-choose-area @change="changeArea"></cc-choose-area>
+  </el-card>
 </template>
 
 <script lang="ts" setup>

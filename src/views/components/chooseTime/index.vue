@@ -3,17 +3,22 @@
     <cc-choose-time :startOptions="startOptions" @startChange="startChange" @endChange="endChange"></cc-choose-time>
     <br />
     <br />
-    <cc-choose-date :disableToday="false" :startOptions="startOptions" @startChange="dateStartChange" @endChange="dateEndChange"></cc-choose-date>
+    <!-- <cc-choose-date
+      :disableToday="false"
+      :startOptions="startOptions"
+      @startChange="dateStartChange"
+      @endChange="dateEndChange"
+    ></cc-choose-date> -->
   </el-card>
 </template>
 
-<script lang='ts' setup>
+<script lang="ts" setup>
 interface endValue {
-  startTime: string,
+  startTime: string
   endTime: string
 }
 interface dateEndValue {
-  startDate: Date,
+  startDate: Date
   endDate: Date
 }
 let startChange = (val: string) => {
@@ -34,5 +39,4 @@ let startOptions = {
 }
 </script>
 
-<style lang='scss' scoped>
-</style>
+<style lang="scss" scoped></style>

@@ -1,16 +1,18 @@
 <template>
-  <div style="background: #f8f8f8;">
-    <div class="flex">
-      <cc-slide-verify ref="slideVerify" @success="success"></cc-slide-verify>
-      <br>
-      <div class="ml-2">
-        <el-button type="primary" size="small" @click="reset">重置</el-button>
+  <el-card>
+    <div style="background: #f8f8f8">
+      <div class="flex">
+        <cc-slide-verify ref="slideVerify" @success="success"></cc-slide-verify>
+        <br />
+        <div class="ml-2">
+          <el-button type="primary" size="small" @click="reset">重置</el-button>
+        </div>
       </div>
     </div>
-  </div>
+  </el-card>
 </template>
 
-<script lang='ts' setup>
+<script lang="ts" setup>
 import { ElMessage } from 'element-plus'
 import { ref } from 'vue'
 
@@ -24,5 +26,4 @@ const reset = () => {
 }
 </script>
 
-<style lang='scss' scoped>
-</style>
+<style lang="scss" scoped></style>

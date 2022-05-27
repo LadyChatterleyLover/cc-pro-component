@@ -1,5 +1,7 @@
 <template>
-  <div ref="el" class="box"></div>
+  <el-card>
+    <div ref="el" class="box"></div>
+  </el-card>
 </template>
 
 <script setup lang="ts">

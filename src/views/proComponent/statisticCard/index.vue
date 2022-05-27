@@ -6,7 +6,7 @@
       <template #title>
         <el-space>
           <span>部门一</span>
-          <el-icon-arrowright></el-icon-arrowright>
+          <el-icon-arrow-right></el-icon-arrow-right>
         </el-space>
       </template>
       <template #extra>
@@ -37,7 +37,7 @@
       <template #title>
         <el-space>
           <span>部门一</span>
-          <el-icon-arrowright></el-icon-arrowright>
+          <el-icon-arrow-right></el-icon-arrow-right>
         </el-space>
       </template>
       <template #extra>
@@ -55,7 +55,7 @@
       <template #title>
         <el-space>
           <span>部门一</span>
-          <el-icon-arrowright></el-icon-arrowright>
+          <el-icon-arrow-right></el-icon-arrow-right>
         </el-space>
       </template>
       <template #extra>

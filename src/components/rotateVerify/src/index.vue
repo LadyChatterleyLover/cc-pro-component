@@ -1,17 +1,8 @@
 <template>
   <div class="cc-rotate-verify">
-    <div
-      class="cc-rotate-verify-title"
-      :style="{ color: titleColor, fontSize: titleSize + 'px' }"
-    >{{ title }}</div>
-    <div
-      class="cc-rotate-verify-desc"
-      :style="{ color: descColor, fontSize: descSize + 'px' }"
-    >{{ desc }}</div>
-    <div
-      class="cc-rotate-verify-img"
-      :style="{ transform: `rotate(${rotate}deg)`, transitionDuration }"
-    >
+    <div class="cc-rotate-verify-title" :style="{ color: titleColor, fontSize: titleSize + 'px' }">{{ title }}</div>
+    <div class="cc-rotate-verify-desc" :style="{ color: descColor, fontSize: descSize + 'px' }">{{ desc }}</div>
+    <div class="cc-rotate-verify-img" :style="{ transform: `rotate(${rotate}deg)`, transitionDuration }">
       <img :src="src" class="cc-rotate-verify-img-image" />
     </div>
     <div
@@ -20,57 +11,66 @@
     >
       <div
         class="cc-rotate-verify-bar-wrap"
-        :style="{ background: barColor, width: barHeight + 'px', height: barHeight + 'px', transitionDuration, transform: `translateX(${translateX}px)` }"
+        :style="{
+          background: barColor,
+          width: barHeight + 'px',
+          height: barHeight + 'px',
+          transitionDuration,
+          transform: `translateX(${translateX}px)`,
+        }"
         @mousedown="handleMouseDown"
         @mousemove="handleMouseMove"
         @mouseup="handleMouseUp"
       >
         <div class="cc-rotate-verify-bar-wrap-arrow">
-          <el-icon-arrowright style=" color: #fff "></el-icon-arrowright>
+          <el-icon-arrow-right style="color: #fff"></el-icon-arrow-right>
         </div>
         <div class="cc-rotate-verify-bar-wrap-arrow">
-          <el-icon-arrowright style=" color: #fff "></el-icon-arrowright>
+          <el-icon-arrow-right style="color: #fff"></el-icon-arrow-right>
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script lang='ts' setup>
+<script lang="ts" setup>
 import { ref, withDefaults } from 'vue'
 
-const props = withDefaults(defineProps<{
-  src: string,
-  title?: string,
-  titleSize?: number,
-  titleColor?: string,
-  desc?: string,
-  descSize?: number,
-  descColor?: string,
-  bgColor?: string,
-  barWidth?: number,
-  barHeight?: number,
-  barBgColor?: string,
-  barColor?: string,
-  // 图片默认旋转角度
-  // 取值范围： -330deg<angle <-30deg 或 30deg<angle<330deg
-  angle?: number,
-  // 误差范围
-  errorRange?: number,
-}>(), {
-  title: '安全验证',
-  titleSize: 14,
-  titleColor: '#999',
-  desc: '拖动滑块使图片角度为正',
-  descSize: 16,
-  descColor: '#333',
-  barHeight: 45,
-  barWidth: 270,
-  barBgColor: 'rgba(86,119,252,.1)',
-  barColor: '#5677fc',
-  angle: 30,
-  errorRange: 5,
-})
+const props = withDefaults(
+  defineProps<{
+    src: string
+    title?: string
+    titleSize?: number
+    titleColor?: string
+    desc?: string
+    descSize?: number
+    descColor?: string
+    bgColor?: string
+    barWidth?: number
+    barHeight?: number
+    barBgColor?: string
+    barColor?: string
+    // 图片默认旋转角度
+    // 取值范围： -330deg<angle <-30deg 或 30deg<angle<330deg
+    angle?: number
+    // 误差范围
+    errorRange?: number
+  }>(),
+  {
+    title: '安全验证',
+    titleSize: 14,
+    titleColor: '#999',
+    desc: '拖动滑块使图片角度为正',
+    descSize: 16,
+    descColor: '#333',
+    barHeight: 45,
+    barWidth: 270,
+    barBgColor: 'rgba(86,119,252,.1)',
+    barColor: '#5677fc',
+    angle: 30,
+    errorRange: 5,
+  }
+)
 
 const emits = defineEmits(['success', 'fail'])
 
@@ -107,7 +107,7 @@ const handleMouseUp = () => {
   } else {
     translateX.value = dis
   }
-  if (rotate.value >= (360 - props.errorRange) && rotate.value <= (360 + props.errorRange)) {
+  if (rotate.value >= 360 - props.errorRange && rotate.value <= 360 + props.errorRange) {
     rotate.value = props.angle
     emits('success')
   } else {
@@ -118,7 +118,7 @@ const handleMouseUp = () => {
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang="scss" scoped>
 .cc-rotate-verify {
   display: flex;
   flex-direction: column;
