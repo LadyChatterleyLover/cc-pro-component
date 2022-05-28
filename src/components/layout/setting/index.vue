@@ -33,6 +33,9 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
+import { useSettingStore } from '@/stores/setting'
+
+const store = useSettingStore()
 
 const visible = ref<boolean>(false)
 const currentColorIndex = ref<number>(0)
@@ -54,6 +57,7 @@ const clickColorItem = (item: string, index: number) => {
 const clickModeItem = (mode: string) => {
   currentThemeMode.value = mode
   localStorage.setItem('themeMode', mode)
+  store.setThemeMode(mode)
   const html = document.getElementsByTagName('html')[0]
   if (mode === 'dark') {
     html.classList.add('dark')
