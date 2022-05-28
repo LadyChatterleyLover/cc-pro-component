@@ -9,7 +9,7 @@
   "dependencies": {
     "@element-plus/icons-vue": "^1.1.4",
     "countup.js": "^2.1.0",
-    "element-plus": "^2.2.1",
+    "element-plus": "^2.2.2",
     "lodash": "^4.17.21",
     "pinia": "^2.0.14",
     "screenfull": "^6.0.1",
