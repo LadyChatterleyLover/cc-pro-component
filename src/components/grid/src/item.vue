@@ -20,7 +20,8 @@
 </template>
 
 <script lang="ts" setup>
-import { inject } from "vue"
+import { inject, computed } from 'vue';
+
 
 const rows = inject<number>("rows")!
 
@@ -50,6 +51,7 @@ const props = withDefaults(
     inset 1px 0 0 0 rgb(0 0 0 / 6%), inset 0 1px 0 0 rgb(0 0 0 / 6%);
   transition: all 0.3s;
   height: fit-content;
+
   &-text {
     font-size: 14px;
   }

@@ -16,7 +16,6 @@ const isDarkColor = ref<string>("")
 watch(
   () => themeMode.value,
   (val) => {
-    console.log(val)
     const html = document.getElementsByTagName('html')[0]
     if (val === "light") {
       isDarkBackground.value = "#f0f2f5"

@@ -39,23 +39,23 @@
           <slot name="cc-desc-card-avatar" v-if="$slots.avatar"></slot>
           <el-avatar size="small" :src="avatar"></el-avatar>
         </el-col>
-        <el-col class="cc-desc-cardtitle" :offset="2" :span="20">
+        <el-col class="cc-desc-card-title" :offset="2" :span="20">
           <slot name="title" v-if="$slots.title"></slot>
           <div v-else>{{ title }}</div>
         </el-col>
       </el-row>
-      <el-row class="cc-desc-card-desc">
+      <el-row class="cc-desc-card-desc" :style="{color}">
         <el-col>
           <slot name="desc" v-if="$slots.desc"></slot>
           <div v-else>{{ desc }}</div>
         </el-col>
       </el-row>
       <el-row justify="space-between">
-        <el-col :span="12" class="cc-desc-card-name">
+        <el-col :span="12" class="cc-desc-card-name" :style="{color}">
           <slot name="name" v-if="$slots.name"></slot>
           <div v-else>{{ name }}</div>
         </el-col>
-        <el-col :span="12" class="cc-desc-card-date">
+        <el-col :span="12" class="cc-desc-card-date" :style="{color: dateColor}">
           <slot name="date" v-if="$slots.date"></slot>
           <div v-else>{{ date }}</div>
         </el-col>
@@ -64,7 +64,9 @@
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { useThemeMode } from '@/hooks/useThemeMode';
+import { computed } from 'vue';
+
 withDefaults(
   defineProps<{
     type?: "value" | "desc"
@@ -89,6 +91,14 @@ withDefaults(
     date: "",
   }
 )
+
+const { themeMode } = useThemeMode()
+const color = computed(() => {
+  return themeMode.value === 'light' ? '#00000072' : '#fff'
+})
+const dateColor = computed(() => {
+  return themeMode.value === 'light' ? '#0000003f' : '#fff'
+})
 </script>
 
 <style scoped lang="scss">
@@ -109,11 +119,9 @@ withDefaults(
   &-desc {
     height: 44px;
     overflow: hidden;
-    color: rgba(0, 0, 0, 0.45);
     line-height: 22px;
   }
   &-name {
-    color: rgba(0, 0, 0, 0.45);
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -122,7 +130,6 @@ withDefaults(
   }
   &-date {
     text-align: right;
-    color: rgba(0, 0, 0, 0.25);
     font-size: 12px;
   }
 }

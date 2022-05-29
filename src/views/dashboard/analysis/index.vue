@@ -14,9 +14,6 @@
         </card>
       </el-col>
     </el-row>
-    <div>
-      <el-button type="primary" @click="toggle">暗黑</el-button>
-    </div>
   </div>
 </template>
 
@@ -62,10 +59,6 @@ const list: any = [
   },
 ]
 
-const toggle = () => {
-  const html = document.getElementsByTagName('html')[0]
-  html.classList.toggle('dark')
-}
 </script>
 
 <style lang="scss" scoped></style>

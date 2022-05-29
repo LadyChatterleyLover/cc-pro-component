@@ -7,7 +7,8 @@
 </template>
 
 <script lang="ts" setup>
-import { provide } from 'vue';
+import { provide } from "vue"
+
 
 const props = withDefaults(
   defineProps<{
@@ -17,7 +18,7 @@ const props = withDefaults(
     rows: 3,
   }
 )
-provide('rows', props.rows)
+provide("rows", props.rows)
 </script>
 
 <style lang="scss" scoped>
@@ -25,5 +26,6 @@ provide('rows', props.rows)
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+
 }
 </style>

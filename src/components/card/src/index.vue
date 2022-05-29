@@ -113,18 +113,21 @@
 
 <script lang="ts">
 export default {
-  name: 'cc-card',
+  name: "cc-card",
 }
 </script>
 
 <script setup lang="ts">
-import { computed, useSlots, getCurrentInstance } from 'vue'
-import type { CSSProperties } from 'vue'
-
 export interface ActionItem {
   icon?: string
   name?: string
 }
+
+import { computed, useSlots, getCurrentInstance } from "vue"
+import type { CSSProperties } from "vue"
+import { useThemeMode } from "@/hooks/useThemeMode"
+
+const { bgColor } = useThemeMode()
 
 const slots: any = useSlots()
 const instance = getCurrentInstance()
@@ -140,64 +143,64 @@ const props = withDefaults(
     ghost?: boolean
     headerBordered?: boolean
     wrap?: boolean
-    size?: 'default' | 'small'
-    layout?: 'default' | 'center'
+    size?: "default" | "small"
+    layout?: "default" | "center"
     colSpan?: number | string
     gutter?: number | number[]
-    direction?: 'row' | 'column'
-    split?: '' | 'vertical' | 'horizontal'
+    direction?: "row" | "column"
+    split?: "" | "vertical" | "horizontal"
     actions?: ActionItem[]
     hoverable?: boolean
   }>(),
   {
-    subTitle: '',
-    tooltip: '',
-    extra: '',
+    subTitle: "",
+    tooltip: "",
+    extra: "",
     loading: false,
     bordered: false,
     headerBordered: false,
     ghost: false,
-    size: 'default',
-    layout: 'default',
+    size: "default",
+    layout: "default",
     colSpan: 24,
     gutter: 0,
-    direction: 'row',
+    direction: "row",
     wrap: false,
     hoverable: false,
   }
 )
 
-const emits = defineEmits(['clickAction'])
+const emits = defineEmits(["clickAction"])
 
 const gutterNum = computed(() => {
   const gutter = instance?.parent?.props.gutter
   if (Array.isArray(gutter)) {
     return gutter
   } else {
-    return (gutter as string) !== '' || (gutter as number) > 0 ? gutter : 0
+    return (gutter as string) !== "" || (gutter as number) > 0 ? gutter : 0
   }
 })
 
 const style = computed(() => {
   let computedStyle: CSSProperties = {}
-  if (typeof props.colSpan === 'number') {
+  if (typeof props.colSpan === "number") {
     computedStyle = {
-      width: (props.colSpan / 24) * 100 + '%',
+      width: (props.colSpan / 24) * 100 + "%",
     }
-  } else if (typeof props.colSpan === 'string') {
-    if (props.colSpan.includes('px') || props.colSpan.includes('%')) {
+  } else if (typeof props.colSpan === "string") {
+    if (props.colSpan.includes("px") || props.colSpan.includes("%")) {
       computedStyle = {
         width: props.colSpan,
         flexShrink: 0,
       }
     } else {
       computedStyle = {
-        width: (Number(props.colSpan) / 24) * 100 + '%',
+        width: (Number(props.colSpan) / 24) * 100 + "%",
       }
     }
   } else {
     computedStyle = {
-      width: '100%',
+      width: "100%",
     }
   }
   return computedStyle
@@ -205,7 +208,7 @@ const style = computed(() => {
 
 // 子组件是否是卡片组件
 const contain = computed(() => {
-  return slots.default?.().find((item: any) => item.type.name === 'cc-card')
+  return slots.default?.().find((item: any) => item.type.name === "cc-card")
 })
 
 // 从父元素去split的值
@@ -214,13 +217,13 @@ const splitValue = computed(() => {
 })
 
 const flexDirection = computed(() => {
-  if (props.split === '') return 'row'
-  if (props.split === 'vertical') return 'row'
-  if (props.split === 'horizontal') return 'column'
+  if (props.split === "") return "row"
+  if (props.split === "vertical") return "row"
+  if (props.split === "horizontal") return "column"
 })
 
 const clickAction = (item: ActionItem, index: number) => {
-  emits('clickAction', { item, index })
+  emits("clickAction", { item, index })
 }
 </script>
 
@@ -234,7 +237,7 @@ const clickAction = (item: ActionItem, index: number) => {
   height: 100%;
   margin: 4px 0;
   padding: 0;
-  background-color: #fff;
+  background: v-bind(bgColor);
   border-radius: 2px;
   &-wrap {
     flex-wrap: wrap;
