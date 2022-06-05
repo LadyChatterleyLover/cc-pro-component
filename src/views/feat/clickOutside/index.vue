@@ -8,13 +8,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useClickOutside } from '@/hooks/useClickOutside'
+import { ref } from "vue"
+import { useClickOutside } from "@/hooks/useClickOutside"
 
 const count = ref(0)
+const box = ref()
 
-const [box] = useClickOutside({
-  callback: () => count.value++,
+useClickOutside({
+  target: box,
+  callback: () => {
+    count.value++
+  },
 })
 </script>
 

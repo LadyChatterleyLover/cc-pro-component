@@ -15,50 +15,50 @@
       </el-col>
     </el-row>
   </div>
+  <div>box</div>
 </template>
 
 <script lang="ts" setup>
-import card from '@/components/business/card/index.vue'
+import card from "@/components/business/card/index.vue"
 
 const list: any = [
   {
-    title: '访问数',
-    tag: '月',
-    tagType: '',
-    value: '$2,000',
-    descTitle: '总访问数',
-    desc: '$120,000',
-    avatar: 'https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png'
+    title: "访问数",
+    tag: "月",
+    tagType: "",
+    value: "$2,000",
+    descTitle: "总访问数",
+    desc: "$120,000",
+    avatar: "https://gw.alipayobjects.com/zos/rmsportal/WdGqmHpayyMjiEhcKoVE.png",
   },
   {
-    title: '访问数',
-    tag: '月',
-    tagType: '',
-    value: '$2,000',
-    descTitle: '总访问数',
-    desc: '$120,000',
-    avatar: 'https://gw.alipayobjects.com/zos/rmsportal/dURIMkkrRFpPgTuzkwnB.png'
+    title: "访问数",
+    tag: "月",
+    tagType: "",
+    value: "$2,000",
+    descTitle: "总访问数",
+    desc: "$120,000",
+    avatar: "https://gw.alipayobjects.com/zos/rmsportal/dURIMkkrRFpPgTuzkwnB.png",
   },
   {
-    title: '访问数',
-    tag: '月',
-    tagType: '',
-    value: '$2,000',
-    descTitle: '总访问数',
-    desc: '$120,000',
-    avatar: 'https://gw.alipayobjects.com/zos/rmsportal/sfjbOqnsXXJgNCjCzDBL.png'
+    title: "访问数",
+    tag: "月",
+    tagType: "",
+    value: "$2,000",
+    descTitle: "总访问数",
+    desc: "$120,000",
+    avatar: "https://gw.alipayobjects.com/zos/rmsportal/sfjbOqnsXXJgNCjCzDBL.png",
   },
   {
-    title: '访问数',
-    tag: '月',
-    tagType: '',
-    value: '$2,000',
-    descTitle: '总访问数',
-    desc: '$120,000',
-    avatar: 'https://gw.alipayobjects.com/zos/rmsportal/kZzEzemZyKLKFsojXItE.png'
+    title: "访问数",
+    tag: "月",
+    tagType: "",
+    value: "$2,000",
+    descTitle: "总访问数",
+    desc: "$120,000",
+    avatar: "https://gw.alipayobjects.com/zos/rmsportal/kZzEzemZyKLKFsojXItE.png",
   },
 ]
-
 </script>
 
 <style lang="scss" scoped></style>

@@ -1,25 +1,25 @@
 import { onMounted, onUnmounted, ref } from 'vue'
+import type { MaybeElementRef } from '../unrefElement'
+import { useRefElement } from '../useRefElement'
 
 interface Options {
+  target: MaybeElementRef,
   callback: (event: any) => void
   eventName?: keyof DocumentEventMap
 }
 
 export function useClickOutside(options: Options) {
-  const { callback, eventName = 'click' } = options
-  const el = ref()
-
-  const handler = (e: any) => {
-    e.preventDefault()
-    if (!el || el.value.contains(e.target)) return
-    callback(e)
-  }
-
-  onMounted(() => {
-    document.addEventListener(eventName, handler)
+  const { target, callback, eventName = 'click' } = options
+  const handler = ref()
+  useRefElement(target, (el: any) => {
+     handler.value = (e: any) => {
+      e.preventDefault()
+      if (!el || el.contains(e.target)) return
+      callback(e)
+    }
+    document.addEventListener(eventName, handler.value)
   })
   onUnmounted(() => {
-    document.removeEventListener(eventName, handler)
+    document.removeEventListener(eventName, handler.value)
   })
-  return [el]
 }
