@@ -1,16 +1,17 @@
-import { onMounted, ref } from 'vue'
+import { ref, type Ref } from 'vue'
 import type { CountUpOptions } from 'countup.js'
 import { CountUp } from 'countup.js'
+import { useRefElement } from '../useRefElement';
 
 export interface Options {
+  target: HTMLElement | Ref<HTMLElement>,
   autoplay?: boolean
   endValue: number
   options?: CountUpOptions
 }
 
 export function useCountup(opts: Options) {
-  const { endValue, options, autoplay = true } = opts
-  const el = ref()
+  const { target, endValue, options, autoplay = true } = opts
   const countUp = ref<CountUp>()
 
   const start = (callback?: (args?: any) => any) => {
@@ -27,8 +28,8 @@ export function useCountup(opts: Options) {
     countUp.value!.update(val)
   }
 
-  onMounted(() => {
-    countUp.value = new CountUp(el.value!, endValue, options)
+  useRefElement(target, (el: HTMLElement) => {
+    countUp.value = new CountUp(el, endValue, options)
     if (autoplay) {
       if (!countUp.value.error) {
         countUp.value.start()
@@ -37,7 +38,6 @@ export function useCountup(opts: Options) {
   })
 
   return {
-    el,
     start,
     pauseResume,
     reset,

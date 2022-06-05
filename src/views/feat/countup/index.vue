@@ -12,9 +12,12 @@
 </template>
 
 <script setup lang="ts">
-import { useCountup } from '@/hooks/useCountup'
+import { useCountup } from "@/hooks/useCountup"
+import { ref } from "vue"
 
-const { el, start, pauseResume, reset, update } = useCountup({ endValue: 20000 })
+
+const el = ref()
+const { start, pauseResume, reset, update } = useCountup({ target: el, endValue: 20000 })
 const startCount = () => {
   start(() => {})
 }

@@ -1,10 +1,9 @@
 import { unrefElement } from "../unrefElement"
-import type { MaybeElementRef } from "../unrefElement"
-import { watch, unref } from "vue"
+import { watch, unref, type Ref } from "vue"
 
-export type Callback = (el: MaybeElementRef) => void
+export type Callback = (el: HTMLElement) => void
 
-export const useRefElement = (target: MaybeElementRef, callback: Callback) => {
+export const useRefElement = (target: HTMLElement | Ref<HTMLElement>, callback: Callback) => {
   watch(
     () => unrefElement(target),
     (val) => {

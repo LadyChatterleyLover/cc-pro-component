@@ -1,9 +1,8 @@
-import { ref, onUnmounted } from "vue"
+import { ref, onUnmounted, type Ref } from "vue"
 import { useRefElement } from "../useRefElement"
 import styles from "./index.module.scss"
-import type { MaybeElementRef } from "../../types"
 
-export function useRipple(target: MaybeElementRef, color: string = "red") {
+export function useRipple(target: HTMLElement | Ref<HTMLElement>, color: string = "red") {
   const span = document.createElement("span")
   span.className = styles["cc--ripple--content"]
   span.style.background = color

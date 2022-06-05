@@ -1,9 +1,9 @@
-import { onMounted, onUnmounted, ref } from 'vue'
+import { onMounted, onUnmounted, ref, type Ref } from 'vue'
 import type { MaybeElementRef } from '../unrefElement'
 import { useRefElement } from '../useRefElement'
 
 interface Options {
-  target: MaybeElementRef,
+  target: HTMLElement | Ref<HTMLElement>,
   callback: (event: any) => void
   eventName?: keyof DocumentEventMap
 }
