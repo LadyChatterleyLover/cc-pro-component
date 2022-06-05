@@ -5,9 +5,12 @@
 </template>
 
 <script setup lang="ts">
+import {ref} from 'vue'
 import { useRipple } from '@/hooks/useRipple'
 
-const [el] = useRipple()
+const el = ref()
+
+useRipple(el)
 </script>
 
 <style scoped>

@@ -1,37 +1,37 @@
-import { ref, onMounted, onUnmounted } from 'vue'
-import styles from './index.module.scss'
+import { ref, onUnmounted } from "vue"
+import { useRefElement } from "../useRefElement"
+import styles from "./index.module.scss"
+import type { MaybeElementRef } from "../../types"
 
-export function useRipple(color: string = 'red') {
-  const el = ref()
-  const span = document.createElement('span')
-  span.className = styles['cc--ripple--content']
+export function useRipple(target: MaybeElementRef, color: string = "red") {
+  const span = document.createElement("span")
+  span.className = styles["cc--ripple--content"]
   span.style.background = color
 
-  const handler = (e: MouseEvent) => {
-    if (el.value.contains(e.target)) {
-      el.value.appendChild(span)
-      el.value.classList.add(styles['cc--ripple--wrap'])
+  const handler = ref()
 
-      span.classList.add(styles['cc--ripple--animation'])
-      span.style.width = el.value.offsetWidth + 'px'
-      span.style.height = el.value.offsetHeight + 'px'
-      span.style.top = -(el.value.offsetHeight / 2 - e.offsetY) + 'px'
-      span.style.left = -(el.value.offsetWidth / 2 - e.offsetX) + 'px'
+  useRefElement(target, (el: any) => {
+    handler.value = (e: MouseEvent) => {
+      if (el.contains(e.target)) {
+        el.appendChild(span)
+        el.classList.add(styles["cc--ripple--wrap"])
 
-      setTimeout(() => {
-        span.classList.remove(styles['cc--ripple--content--ripple'])
-        el.value.classList.remove(styles['cc--ripple--wrap'])
-        el.value.removeChild(span)
-      }, 500)
+        span.classList.add(styles["cc--ripple--animation"])
+        span.style.width = el.offsetWidth + "px"
+        span.style.height = el.offsetHeight + "px"
+        span.style.top = -(el.offsetHeight / 2 - e.offsetY) + "px"
+        span.style.left = -(el.offsetWidth / 2 - e.offsetX) + "px"
+
+        setTimeout(() => {
+          span.classList.remove(styles["cc--ripple--content--ripple"])
+          el.classList.remove(styles["cc--ripple--wrap"])
+          el.removeChild(span)
+        }, 400)
+      }
     }
-  }
-
-  onMounted(() => {
-    document.addEventListener('click', handler)
+    document.addEventListener("click", handler.value)
   })
   onUnmounted(() => {
-    document.removeEventListener('click', handler)
+    document.removeEventListener("click", handler.value)
   })
-
-  return [el]
 }
