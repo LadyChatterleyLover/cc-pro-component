@@ -1,10 +1,10 @@
 import { unrefElement } from "../unrefElement"
-import { watch, unref, type Ref } from "vue"
+import { watch, unref, type Ref, onUnmounted } from "vue"
 
 export type Callback = (el: HTMLElement) => void
 
 export const useRefElement = (target: HTMLElement | Ref<HTMLElement>, callback: Callback) => {
-  watch(
+  const stopWatch = watch(
     () => unrefElement(target),
     (val) => {
       if (val) {
@@ -16,4 +16,7 @@ export const useRefElement = (target: HTMLElement | Ref<HTMLElement>, callback: 
       flush: "post",
     }
   )
+  onUnmounted(() => {
+    stopWatch()
+  })
 }
